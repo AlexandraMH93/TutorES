@@ -4,12 +4,13 @@
 
 body {
   margin: 0;
-  overflow: hidden;
+ overflow: hidden;
 }
 
 #mainContainer{
 
   width: 88vw;
+  height:90vh;
   position: absolute;
   left: 12vw;
   top:10vh;

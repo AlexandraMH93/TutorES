@@ -1,0 +1,14 @@
+#calendarContainer{
+
+    width:80%;
+    height: 100%;
+    margin:auto;
+    overflow: scroll;
+}
+
+.eventTitle{
+
+    margin: 0;
+}
+
+ 
