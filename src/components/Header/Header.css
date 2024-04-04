@@ -1,0 +1,12 @@
+#header{
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 20;
+}
+
+#header img{
+    width: 15%;
+}
