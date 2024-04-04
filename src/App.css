@@ -6,3 +6,12 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
+#mainContainer{
+
+  width: 88vw;
+  position: absolute;
+  left: 12vw;
+  top:10vh;
+
+}
