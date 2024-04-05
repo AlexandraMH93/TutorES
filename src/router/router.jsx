@@ -29,17 +29,14 @@ const router = createBrowserRouter([
              {
                  path:'',
                  element: <TeacherCalendar/>
-             }
-              
-        ]
-        path:'teacher',
-        element: <MainLayout />,
-        children:[
-            {
+             },
+             {
                 path:'subjects',
                 element: <TeacherSubjects />
             }
+              
         ]
+        
     },
     {
         path:'student',

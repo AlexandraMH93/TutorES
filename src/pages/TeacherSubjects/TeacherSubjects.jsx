@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { ListSubjects } from '../../components/ListSubjects/ListSubjects'
 import { getAllSubjects } from '../../services/subjectService'
@@ -15,9 +15,9 @@ const TeacherSubjects = () => {
     useEffect(() => {handleSubjects()}, [])
     
   return (
-    <div id='subjects' >
-        <Typography id='title' variant='h1'>Subjects</Typography>
-        <ListSubjects subjectsObj={subjects} />
+    <div id='subjects' > {/* defino lo que se va a mostrar en la pestaña de subjects para el teacher */}
+        <Typography id='title' variant='h3'>Subjects</Typography>
+        <ListSubjects subjectsObj={subjects} /> {/* muestro las asignaturas */}
     </div>
   )
 }
