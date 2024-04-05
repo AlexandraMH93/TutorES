@@ -7,7 +7,7 @@ const Header = () => {
   return (
    < >
       <AppBar id='header'position="static">
-          <img id='book' src={bookLogo} alt="tutorES" />
+          {/* <img id='book' src={bookLogo} alt="tutorES" /> */}
           <img id='logo' src={logo}alt="tutorES" />
       </AppBar>
    </>

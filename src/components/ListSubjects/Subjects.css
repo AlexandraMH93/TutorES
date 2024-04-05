@@ -1,5 +1,5 @@
 #subjects {
-    color: white;
+    color: black;
     text-align: center;
     /* width: 100%; */
     display: flex;
@@ -13,8 +13,9 @@
 #title {
     width: 100%;
 }
+
 .subject {
-    background-color: white;
+    background-color: rgba(243, 250, 249, 0.279);
     color: black;
     width: 150px;
     height: 150px;

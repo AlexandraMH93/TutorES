@@ -2,13 +2,15 @@
     /* z-index: 10;
     position: fixed; */
     height: 100%;
-    width: 12vw;
-    background-color: #41D4D4;
+    width: 8vw;
+    /* background-color: #cbdada; */
+    background-color: rgb(234, 247, 246);
     left: 0;
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
+    color: black;
 }
 
 #logout {
