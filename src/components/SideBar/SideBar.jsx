@@ -1,12 +1,13 @@
+import { Box } from '@mui/material'
 import './SideBar.css'
 
 const SideBar = () => {
   return (
-    <div id='sidebar'>
+    <Box id='sidebar'>
         <div id='logout'>
-            Logout
+            Log out
         </div>
-    </div>
+    </Box>
   )
 }
 
