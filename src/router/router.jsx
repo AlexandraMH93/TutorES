@@ -47,7 +47,20 @@ const router = createBrowserRouter([
         //         element: < />
         //     }
         // ]
-    }
+    },  {
+        path:'/teacher/class',
+        element: <MainLayout />
+        // children:[
+        //     {
+        //         path:'/',
+        //         element: < />
+        //     },
+        //     {
+        //         path:'/',
+        //         element: < />
+        //     }
+        // ]
+    },
 
 ]) 
 
