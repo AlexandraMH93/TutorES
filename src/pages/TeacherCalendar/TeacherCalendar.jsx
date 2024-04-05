@@ -1,7 +1,7 @@
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography,Button, Container } from "@mui/material";
 import { useEffect, useState  } from "react";
 import {
   getTimeTable,
@@ -10,7 +10,7 @@ import {
 } from "../../services/teacherService";
 
 import "./TeacherCalendar.css";
-import { Button } from "@mui/base";
+ 
 
 const TeacherCalendar = () => {
   const [timeTable, setTimeTable] = useState([]);
@@ -70,10 +70,14 @@ const TeacherCalendar = () => {
   const renderEventContent = (eventContent) => {
     
     return (
-    <>
-    <Typography variant="h7" className="eventTitle">{eventContent.event.title}</Typography>
-    { eventContent.event.extendedProps.subject ? <Typography  variant="h7"> Asignatura: {eventContent.event.extendedProps.subject}</Typography>: <Button variant="" onClick={()=>deleteSchedule(eventContent.event.id)}>Eliminar clase</Button> }
-    </>
+     
+    <Box className={ eventContent.event.extendedProps.subject ? "evenContainer classContainer" : "evenContainer dateContainer" }>
+    <Typography variant="h6" color="secondary" className="eventTitle">{eventContent.event.title}</Typography>
+    { eventContent.event.extendedProps.subject ? <Typography color="secondary" variant="h7"> Asignatura: {eventContent.event.extendedProps.subject}</Typography>:
+     <Button variant="text" onClick={()=>deleteSchedule(eventContent.event.id)}>Eliminar clase</Button> 
+    }
+     </Box>
+     
     );
   };
 
@@ -89,6 +93,7 @@ const TeacherCalendar = () => {
           dateClick={handleHourClick}
           initialView="timeGridFiveDay"
           eventContent={renderEventContent}
+          eventColor="rgba(255, 255, 255,0.0)"
           views={{
             timeGridFiveDay: {
               type: "timeGrid",

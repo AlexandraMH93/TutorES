@@ -11,4 +11,18 @@
     margin: 0;
 }
 
- 
+.evenContainer{
+
+
+    height: 100%;
+}
+
+.dateContainer{
+    background-color: #aadeff3f;
+}
+
+.classContainer{
+
+
+background-color: #64FF81;
+}
