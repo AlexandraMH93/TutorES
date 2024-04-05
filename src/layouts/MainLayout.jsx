@@ -5,10 +5,13 @@ import SideBar from "../components/SideBar/SideBar"
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className='layout'>
       <Header />
-      <SideBar />
-      <Outlet />
+      <div id='main'>
+        <SideBar />
+        <Outlet />
+      </div>
+      
     </div>
   )
 }

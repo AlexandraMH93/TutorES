@@ -4,6 +4,7 @@ import Login from "../pages/Login/Login"
 import SignUp from "../pages/SignUp/SignUp"
 import MainLayout from "../layouts/MainLayout"
 import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
+import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
 
 
 const router = createBrowserRouter([
@@ -31,16 +32,25 @@ const router = createBrowserRouter([
              }
               
         ]
+        path:'teacher',
+        element: <MainLayout />,
+        children:[
+            {
+                path:'subjects',
+                element: <TeacherSubjects />
+            }
+        ]
     },
     {
-        path:'/student',
+        path:'student',
         element: <MainLayout />
-        // children:[
-        //     {
-        //         path:'/',
-        //         element: < />
-        //     },
-        //     {
+    /*     children:[
+             {
+                 path:'subjects',
+                 element: <Subjects />
+            }
+        ] */
+             //{
         //         path:'/',
         //         element: < />
         //     }
