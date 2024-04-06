@@ -1,18 +1,22 @@
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { Box, Typography,Button, Container } from "@mui/material";
-import { useEffect, useState  } from "react";
+import { Box, Typography, Button, Container } from "@mui/material";
+import { useEffect, useState } from "react";
 import {
   getTimeTable,
   createTimeTable,
-  getStudent,getSubject
+  getStudent,
+  getSubject,
+  deleteTimeTable,
 } from "../../services/teacherService";
 
 import "./TeacherCalendar.css";
- 
+import DatePopUp from "../../components/DatePopup/DatePopUp";
 
 const TeacherCalendar = () => {
+  const [open, setOpen] = useState(false);
+  const [currentDateInfo, setcurrentDateInfo] = useState({});
   const [timeTable, setTimeTable] = useState([]);
 
   const getSchedule = async () => {
@@ -22,20 +26,27 @@ const TeacherCalendar = () => {
         if (element.class_date != null) {
           const student = await getStudent(element.class_date.student_id);
           const subject = await getSubject(element.class_date.subjectId);
-             
+       
           return {
-            id:element.id,
+            id: element.id,
             title: "Clase con " + student.firstName,
             start: element.date + "T" + element.time,
-            extendedProps:{
-                subject:subject.name,
-                
-
-            }
+            extendedProps: {
+              timeTableid: element.id,
+              classId: element.class_date.id,
+              subject: subject.name,
+              description: element.class_date.comments,
+              student: student.firstName+" "+ student.lastName,
+              studentImg: student.profileImage,
+              date:element.date,
+              time:element.time,
+              email:student.email
+              
+            },
           };
         } else {
           return {
-            id:element.id,
+            id: element.id,
             title: "Clase no escogida",
             start: element.date + "T" + element.time,
           };
@@ -46,17 +57,22 @@ const TeacherCalendar = () => {
     setTimeTable(newSchedule);
   };
 
-  const deleteSchedule=( id)=>{
-    console.log(id);
-
-  }
+  const deleteSchedule = async (eventId) => {
+    setTimeTable((prev) =>
+      prev.filter((elem) => elem.id !== parseInt(eventId))
+    );
+    await deleteTimeTable(eventId);
+  };
 
   useEffect(() => {
     getSchedule();
-  }, [timeTable]);
+  }, []);
 
   const handleEventClick = (eventInfo) => {
-    console.log(eventInfo);
+    if (eventInfo.event.extendedProps) {
+      setcurrentDateInfo(eventInfo.event.extendedProps)
+      setOpen(true)
+    }
   };
 
   const handleHourClick = async (dateInfo) => {
@@ -64,20 +80,43 @@ const TeacherCalendar = () => {
       date: dateInfo.dateStr.split("T")[0],
       time: dateInfo.dateStr.split("T")[1],
     });
-    getSchedule();
+
+    setTimeTable((prev) => [
+      ...prev,
+      {
+        id: result.data.timetable.id,
+        title: "Clase no escogida",
+        start: dateInfo.dateStr,
+      },
+    ]);
   };
 
   const renderEventContent = (eventContent) => {
-    
     return (
-     
-    <Box className={ eventContent.event.extendedProps.subject ? "evenContainer classContainer" : "evenContainer dateContainer" }>
-    <Typography variant="h6" color="secondary" className="eventTitle">{eventContent.event.title}</Typography>
-    { eventContent.event.extendedProps.subject ? <Typography color="secondary" variant="h7"> Asignatura: {eventContent.event.extendedProps.subject}</Typography>:
-     <Button variant="text" onClick={()=>deleteSchedule(eventContent.event.id)}>Eliminar clase</Button> 
-    }
-     </Box>
-     
+      <Box
+        className={
+          eventContent.event.extendedProps.subject
+            ? "evenContainer classContainer"
+            : "evenContainer dateContainer"
+        }
+      >
+        <Typography variant="h6" color="secondary" className="eventTitle">
+          {eventContent.event.title}
+        </Typography>
+        {eventContent.event.extendedProps.subject ? (
+          <Typography color="secondary" variant="h7">
+            
+            Asignatura: {eventContent.event.extendedProps.subject}
+          </Typography>
+        ) : (
+          <Button
+            variant="text"
+            onClick={() => deleteSchedule(eventContent.event.id)}
+          >
+            Eliminar clase
+          </Button>
+        )}
+      </Box>
     );
   };
 
@@ -108,7 +147,9 @@ const TeacherCalendar = () => {
           }}
         />
       </Box>
+      <DatePopUp setOpen={setOpen} open={open} dateInfo={currentDateInfo} />
     </Box>
+
   );
 };
 

@@ -7,7 +7,8 @@ const getTimeTable = async () => {
     },
   });
 
-  return data;
+ 
+  return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
 };
 
 const getStudent = async (id) => {
@@ -32,7 +33,17 @@ const getStudent = async (id) => {
   
 
 const createTimeTable = async (timeData) => {
-  const { data } = api.post("/profile/timeTable/", timeData, {
+  const res  = api.post("/profile/timeTable/", timeData, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+   
+  return res;
+};
+
+const deleteTimeTable = async (timeData) => {
+  const { data } = api.delete("/profile/timeTable/"+timeData, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
@@ -43,4 +54,4 @@ const createTimeTable = async (timeData) => {
  
 
 
-export { getTimeTable, createTimeTable, getStudent,  getSubject};
+export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable};

@@ -1,0 +1,27 @@
+ 
+.dateElementContainer{
+
+    display: flex;
+    align-items: start;
+    gap:10px
+
+}
+
+.dateElementContainer h6 {
+
+    line-height: 1;
+}
+
+
+.dateElementContainer svg{
+
+    width:20px
+}
+
+
+#avatarImg{
+
+    width:90%;
+    margin: auto;
+    display: block;
+}
