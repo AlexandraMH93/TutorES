@@ -80,7 +80,7 @@ body {
   width: 92vw;
   margin-left: 8vw;
   margin-top:10vh;
-  overflow: scroll;
+  overflow-y: scroll;
   
 
 }
