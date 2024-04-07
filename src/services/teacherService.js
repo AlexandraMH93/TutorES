@@ -42,16 +42,26 @@ const createTimeTable = async (timeData) => {
   return res;
 };
 
-const deleteTimeTable = async (timeData) => {
-  const { data } = api.delete("/profile/timeTable/"+timeData, {
+const deleteTimeTable = async (timeId) => {
+  const { data } = api.delete("/profile/timeTable/"+timeId, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
   });
+  
   return data;
 };
 
- 
+const deleteClassDate = async (classId) => {
+  const { data } = api.delete("/profile/classDate/"+classId, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+  
+  return data;
+};
 
 
-export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable};
+
+export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable, deleteClassDate};

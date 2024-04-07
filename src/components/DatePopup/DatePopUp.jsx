@@ -9,14 +9,28 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import CircleIcon from "@mui/icons-material/Circle";
+
+import {
+  deleteTimeTable,
+  deleteClassDate,
+} from "../../services/teacherService";
+
 import avatarImg from "../../assets/images/defaultAvatar.png"
 import "./DatePopup.css";
-const DatePopUp = ({ open, setOpen, dateInfo }) => {
+
+
+const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleDeleteButton = () => {};
+  const handleDeleteButton = async() => {
+
+    const result = await deleteClassDate(dateInfo.classId)
+    const result2 = await deleteTimeTable(dateInfo.timeTableid)
+    setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.timeTableid)))
+    setOpen(false)
+  };
 
   return (
     <Dialog open={open} className="datePopup" sx={{ //You can copy the code below in your theme
@@ -107,7 +121,7 @@ const DatePopUp = ({ open, setOpen, dateInfo }) => {
         <Link href={"mailto:" + dateInfo.email} underline="none">
           Contactar estudiante
         </Link>
-        <Button onClick={handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+        <Button onClick={()=>handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
       </DialogActions>
     </Dialog>
   );

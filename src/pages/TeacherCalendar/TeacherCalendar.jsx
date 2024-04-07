@@ -1,6 +1,7 @@
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import esLocale from '@fullcalendar/core/locales/es'
 import { Box, Typography, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
@@ -58,8 +59,7 @@ const TeacherCalendar = () => {
   };
 
   const deleteSchedule = async (eventId) => {
-    setTimeTable((prev) =>
-      prev.filter((elem) => elem.id !== parseInt(eventId))
+    setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(eventId))
     );
     await deleteTimeTable(eventId);
   };
@@ -122,8 +122,11 @@ const TeacherCalendar = () => {
 
   return (
     <Box id="mainContainer">
-      <Box id="calendarContainer">
+       <Box id="calendarContainer">
+      <Typography variant="h4"> Tu calendario</Typography>
         <FullCalendar
+          headerToolbar={{start:'', center:'title', end:'today prev,next' }}
+          locale={esLocale}
           plugins={[timeGridPlugin, interactionPlugin]}
           timeZone="GMT"
           selectable={true}
@@ -147,7 +150,7 @@ const TeacherCalendar = () => {
           }}
         />
       </Box>
-      <DatePopUp setOpen={setOpen} open={open} dateInfo={currentDateInfo} />
+      <DatePopUp setOpen={setOpen} open={open} dateInfo={currentDateInfo} setTimeTable={setTimeTable} />
     </Box>
 
   );

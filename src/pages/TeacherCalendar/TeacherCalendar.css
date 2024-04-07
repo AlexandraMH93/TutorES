@@ -3,6 +3,7 @@
     width:80%;
     height: 100%;
     margin:auto;
+    padding: 2% 0%;
   
 }
 
@@ -13,12 +14,28 @@
 
 .evenContainer{
 
-
+    padding: 0% 2%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+
 }
 
 .dateContainer{
     background-color: #aadeff3f;
+  
+}
+
+.dateContainer button{
+
+    padding: 0;
+}
+
+.dateContainer h6{
+    line-height: 1;
+    padding: 0;
 }
 
 .classContainer{
