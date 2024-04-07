@@ -77,11 +77,11 @@ body {
 
 #mainContainer{
 
-  width: 88vw;
-  position: absolute;
-  left: 12vw;
-  top:10vh;
+  width: 92vw;
+  margin-left: 8vw;
+  margin-top:10vh;
+  overflow: scroll;
+  
 
 }
-
  

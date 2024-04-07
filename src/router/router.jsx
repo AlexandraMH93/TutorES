@@ -31,6 +31,8 @@ const router = createBrowserRouter([
                  element: <TeacherCalendar/>
              },
              {
+             },
+             {
                 path:'subjects',
                 element: <TeacherSubjects />
             }
