@@ -70,7 +70,7 @@ const SideBar = () => {
               <Link to="/teacher/subjects" onClick={()=>colorController("subjects")}>
                 <ListOutlinedIcon color={currentPage.subjects} />
                 <Typography color="secondary" variant="body1">
-                  Temas
+                  Asignaturas
                 </Typography>
               </Link>
             </Box>

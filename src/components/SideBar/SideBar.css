@@ -20,7 +20,8 @@
 #sidebarLinks{
 
     margin-top: 13vh;
-    width:80%
+    width:80%;
+
 }
 
 .sideBarOption{
@@ -47,6 +48,6 @@
 
     display: flex;
     flex-direction: column;
-    gap: 15px
+    gap: 40px
 
 }
