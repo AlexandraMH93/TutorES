@@ -7,6 +7,7 @@ import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
 import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
 import TeacherClasses from "../pages/TeacherClasses/TeacherClasses"
 import StudentClasses from "../pages/StudentClasses/StudentClasses"
+import BookingClass from "../pages/BookingClass/BookingClass"
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
                 path: '',
                 element: <StudentClasses/>
             },
+            {
+                path: 'booking',
+                element: <BookingClass/>
+            },
+            
             
         ]
        
