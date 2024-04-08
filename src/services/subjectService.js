@@ -14,3 +14,5 @@ export const getOneSubject = async (id) => {
     const { data } = await api.get(`/subject/:${id}`)
     return data
 }
+
+export const getTeacherSu

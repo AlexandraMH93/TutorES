@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ListSubjects } from '../../components/ListSubjects/ListSubjects'
 import { getAllSubjects } from '../../services/subjectService'
 
@@ -9,9 +9,14 @@ const TeacherSubjects = () => {
     
     const handleSubjects = async () => {
         const res = await getAllSubjects()
+        
         setSubjects(res)
         console.log(subjects)
+
     }
+
+
+
     useEffect(() => {handleSubjects()}, [])
     
   return (

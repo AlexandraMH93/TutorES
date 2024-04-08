@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Subjects.css'
 import { Card, CardContent, Typography } from '@mui/material'
-import TeacherSubject from '../TeacherSubject/TeacherSubject'
+import TeacherSubject from '../CardTeacherSubject/CardTeacherSubject'
 
 
 export const ListSubjects = ({subjectsObj}) => {

@@ -14,13 +14,7 @@
     width: 100%;
 }
 
-.subject {
-    background-color: rgba(243, 250, 249, 0.279);
-    color: black;
-    width: 150px;
-    height: 150px;
-    border-radius: 5px;
-}
+
 
 #subjectsCard-container {
     display: flex;
