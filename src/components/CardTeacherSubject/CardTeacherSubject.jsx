@@ -1,24 +1,23 @@
-import { Button, Card, CardContent, Typography, Avatar } from '@mui/material'
+import { Button, Card, CardContent, Typography, CardActions, Avatar } from '@mui/material'
 import './CardTeacherSubject.css'
-import PropTypes from 'prop-types'
 
-const TeacherSubject = ({subjectName, subjectImgUrl}) => {
+export const CardTeacherSubject = ({subjectName, subjectImgUrl}) => { /* hay que cargar las img desde la base de datos */
+
+
+
   return (
    
-      <Card className='subject'>
-                <CardContent sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', gap: '5px'}}>
+      <Card className='subject'  > {/* defino la card de la subject del teacher */}
+                <CardContent sx={{display: 'flex', height:'100px', flexDirection: 'column',justifyContent: 'end'}}> 
                     <Typography>{subjectName}</Typography>
-                    <Avatar className='avatar' alt={subjectName} src={subjectImgUrl} />
-                    <Button>Delete</Button>
+                    <Avatar alt={subjectName} src={subjectImgUrl}></Avatar>
                 </CardContent>
+
+                <CardActions>
+                    <Button>Delete</Button>
+                  
+                </CardActions>
      </Card>
     
   )
 }
-
-TeacherSubject.propTypes = {
-  subjectName: PropTypes.string,
-  subjectImgUrl: PropTypes.string
-}
-
-export default TeacherSubject

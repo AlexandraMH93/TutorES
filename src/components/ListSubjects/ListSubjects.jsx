@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import './Subjects.css'
-import { Card, CardContent, Typography } from '@mui/material'
-import TeacherSubject from '../CardTeacherSubject/CardTeacherSubject'
+import './ListSubjects.css'
+import  {CardTeacherSubject}  from '../CardTeacherSubject/CardTeacherSubject'
+import { Box } from '@mui/material'
 
 
 export const ListSubjects = ({subjectsObj}) => {
    
   return (
    
-        <div id='subjectsCard-container'>
+        <Box id='subjectsCard-container'>
             {subjectsObj && subjectsObj.map((element, idx) => {
-            console.log(element)
+         
             return (
-                 <TeacherSubject subjectName={element.name}   />
+                 <CardTeacherSubject subjectName={element.name}  subjectImgUrl={element.url} />
             )
             })} 
-        </div>
+        </Box>
   )
 }

@@ -15,4 +15,3 @@ export const getOneSubject = async (id) => {
     return data
 }
 
-export const getTeacherSu

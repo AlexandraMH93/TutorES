@@ -21,10 +21,6 @@ body {
  
 }
 
-.title {
-  font-size: 2.5rem;
-  font-family: "Lobster", cursive;
-}
 
 /* .wrapper {
   
@@ -74,3 +70,13 @@ body {
   justify-content: space-between;
   
 }
+
+#mainContainer{
+
+  width: 92vw;
+  margin-left: 8vw;
+  margin-top:10vh;
+  overflow-y: scroll;
+  
+}
+ 
