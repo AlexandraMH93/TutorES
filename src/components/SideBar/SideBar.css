@@ -41,3 +41,12 @@
 
     font-size:40px
 } 
+
+
+#sidebarLinks{
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+
+}

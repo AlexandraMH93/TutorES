@@ -30,7 +30,6 @@ const router = createBrowserRouter([
                  path:'',
                  element: <TeacherCalendar/>
              },
-           
              {
                 path:'subjects',
                 element: <TeacherSubjects />

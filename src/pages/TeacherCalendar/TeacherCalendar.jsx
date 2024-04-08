@@ -69,7 +69,7 @@ const TeacherCalendar = () => {
   }, []);
 
   const handleEventClick = (eventInfo) => {
-    if (eventInfo.event.extendedProps) {
+    if (eventInfo.event.extendedProps.timeTableid) {
       setcurrentDateInfo(eventInfo.event.extendedProps)
       setOpen(true)
     }
