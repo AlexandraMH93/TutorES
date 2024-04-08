@@ -8,7 +8,7 @@ export const ListSubjects = ({subjectsObj}) => {
    
         <div id='subjectsCard-container'>
             {subjectsObj && subjectsObj.map((element, idx) => {
-            console.log(element)
+         
             return (
                  <CardTeacherSubject subjectName={element.name}   />
             )

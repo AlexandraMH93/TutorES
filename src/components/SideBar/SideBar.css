@@ -7,7 +7,7 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     color: black;
 
@@ -15,4 +15,38 @@
 
 #logout {
     
+}
+
+#sidebarLinks{
+
+    margin-top: 13vh;
+    width:80%
+}
+
+.sideBarOption{
+    
+  
+}
+.sideBarOption a{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+.sideBarOption svg{
+
+    font-size:40px
+} 
+
+
+#sidebarLinks{
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+
 }
