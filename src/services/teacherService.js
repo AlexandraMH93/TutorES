@@ -7,8 +7,7 @@ const getTimeTable = async () => {
     },
   });
 
- 
-  return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
+   return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
 };
 
 const getStudent = async (id) => {
@@ -17,7 +16,7 @@ const getStudent = async (id) => {
         Authorization: localStorage.getItem("token"),
       },
     });
-  
+   
     return data;
   };
 

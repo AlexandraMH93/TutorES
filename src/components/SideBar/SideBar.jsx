@@ -51,7 +51,7 @@ const SideBar = () => {
         {localStorage.getItem("role") == "teacher" ? (
           <>
             <Box className="sideBarOption">
-              <Link to=""  onClick={()=>colorController("calendar")}>
+              <Link to="/teacher/"  onClick={()=>colorController("calendar")}>
                 <ArticleOutlinedIcon color={currentPage.calendar} />
                 <Typography color="secondary" variant="body1">
                   Calendario
@@ -80,7 +80,7 @@ const SideBar = () => {
           <>
            
           <Box className="sideBarOption">
-            <Link to="/teacher/classes" onClick={()=>colorController("classes")}>
+            <Link to="/student/" onClick={()=>colorController("classes")}>
               <CalendarTodayOutlinedIcon color="secondary" />
               <Typography color="secondary" variant="body1">
                 Clases
@@ -88,7 +88,7 @@ const SideBar = () => {
             </Link>
           </Box>
           <Box className="sideBarOption">
-            <Link to="/teacher/subjects" onClick={()=>colorController("subjects")}>
+            <Link to="/student/subjects" onClick={()=>colorController("subjects")}>
               <BookmarkBorderOutlinedIcon color={currentPage.subjects} />
               <Typography color="secondary" variant="body1">
                 Reserva una clase

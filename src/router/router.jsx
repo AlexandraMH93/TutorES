@@ -5,56 +5,61 @@ import SignUp from "../pages/SignUp/SignUp"
 import MainLayout from "../layouts/MainLayout"
 import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
 import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
+import TeacherClasses from "../pages/TeacherClasses/TeacherClasses"
+import StudentClasses from "../pages/StudentClasses/StudentClasses"
 
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <AuthLayout />,
-        children:[
+        children: [
             {
-                path:'',
+                path: '',
                 element: <Login />
             },
             {
-                path:'/signup',
+                path: '/signup',
                 element: <SignUp />
             }
         ]
     },
     {
-        path:'/teacher',
+        path: '/teacher',
         element: <MainLayout />,
-        children:[
-             {
-                 path:'',
-                 element: <TeacherCalendar/>
-             },
-             {
-                path:'subjects',
+        children: [
+            {
+                path: '',
+                element: <TeacherCalendar />
+            },
+
+            {
+                path: 'subjects',
                 element: <TeacherSubjects />
+            },
+            {
+                path: 'classes',
+                element: <TeacherClasses />
             }
-              
+
         ]
-        
+
     },
     {
-        path:'student',
-        element: <MainLayout />
-    /*     children:[
-             {
-                 path:'subjects',
-                 element: <Subjects />
-            }
-        ] */
-             //{
-        //         path:'/',
-        //         element: < />
-        //     }
-        // ]
+        path: '/student',
+        element: <MainLayout />,
+
+        children: [
+            {
+                path: '',
+                element: <StudentClasses/>
+            },
+            
+        ]
+       
     }
 
-]) 
+])
 
 export default router
 
