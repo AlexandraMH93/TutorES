@@ -3,12 +3,15 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../../services/authService"
 import { Email, Lock, VisibilityOff } from "@mui/icons-material"
+import Divider from '@mui/material/Divider'
+import Typography from '@mui/material/Typography'
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate()
+    const [isPassVisible, setIsPassVisible]  = useState(false)
 
+    const navigate = useNavigate()
     const handleLogin = async () => {
         const res = await login({email, password})
         localStorage.setItem('token', res.token)
@@ -35,7 +38,7 @@ const Login = () => {
                         )
                     }}
                      onChange={(e) => setEmail(e.target.value)} ></TextField>
-                    <TextField type='password' variant="outlined" label='Password' 
+                    <TextField type={isPassVisible ? 'text' : 'password'} variant="outlined" label='Password' 
                        InputProps={{
                         startAdornment: (
                         <InputAdornment>
@@ -46,7 +49,7 @@ const Login = () => {
                         ),
                         endAdornment: (
                         <InputAdornment>
-                            <IconButton>
+                            <IconButton onClick={() => {setIsPassVisible((oldState) => !oldState)}} >
                                 <VisibilityOff />
                             </IconButton>
                         </InputAdornment>
@@ -55,9 +58,12 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}></TextField>
                 </CardContent>
 
-                <CardActions sx={{display: 'flex', justifyContent: 'end'}}>
-                    <Button color="success" onClick={() => {handleLogin()}}>Login</Button>
-                    <Button > Registrarse</Button>
+                <Divider />
+
+                <CardActions sx={{display: 'flex', flexDirection: 'column',justifyContent: 'center'}}>
+                    <Button variant="outlined" color="success" onClick={() => {handleLogin()}} fullWidth>Login</Button>
+                    <Typography>Don't have account?<Button > Registrarse</Button></Typography>
+                    
                 </CardActions>
             </Card>
         </div>
