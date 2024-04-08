@@ -1,147 +1,44 @@
-import { Card, CardContent, Typography, Box } from "@mui/material"
+import { Card, CardContent, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import './TeacherClasses.css'
+import { useState, useEffect } from "react"
+import { getTimeTable } from "../../services/teacherService"
+import ListClasses from "../../components/ListClasses/ListClasses"
+import FirstClass from "../../components/FirstClass/FirstClass"
 
-const Class = () => {
+const Class = () => { 
+    
+    const [classDate, setclassDate] = useState([])
+    const [firstclassDate, setfirstclassDate] = useState([])
+    const handleClassDate = async () => {
+        const res = await getTimeTable()
+        setclassDate(res.filter((elem)=> elem.class_date!=null))
 
+    }
+ 
+    useEffect(() => {handleClassDate()}, [])
 
   return (
-    <div className="class">
+    <div id="mainContainer">
        <Card>
         <CardContent>
-            <Typography variant="h5" mt={10}ml={10} >
+            <Typography variant="h5"  >
               Your next Class
             </Typography>
-            
+
             <div id="box1">
-            <Typography variant="body2" color="text.secondary" ml={10}>
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste repellat alias eum natus, quibusdam atque officiis debitis temporibus dignissimos commodi dicta provident sunt reiciendis ipsam sapiente, dolorum maiores minima impedit!
-         Veniam nostrum laboriosam optio laudantium quos debitis pariatur quam nisi minima. Modi magni aut, consequatur maxime aliquid quidem delectus. Animi facere aliquid repellat perspiciatis officiis aut saepe accusantium explicabo quisquam?
-         Culpa dignissimos, officia incidunt earum maiores porro, possimus expedita exercitationem similique consequuntur rem, ratione ullam. Enim dolor voluptas nihil repudiandae consequatur? Optio cumque velit maxime beatae animi asperiores ullam natus?
-        </Typography>
-
-            <div id="button">
-                <Link to=''>
-                Contact Teacher
-                </Link>
-                <button className="cancel"> Cancel date </button>
+            <FirstClass classObj={classDate[0]}/>
+ 
             </div>
-        </div>
 
-            <Typography variant="h5"ml={8}>
+            <Typography variant="h5" >
               Your other Classes
             </Typography>
             <input type="search" /> 
             <input type="date" />
 
         <div id="box2">
-            <Box
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-            <img></img>
-            <Typography>
-              Alejandro
-              Data:<data> 04-04-24</data>
-            </Typography>
-              </Box>
-
-              <Box
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-              <img></img>
-              <Typography>
-                Alejandro
-                Data: <data> 04-04-24</data>
-              </Typography>
-            </Box>
-
-            <Box 
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-              <img></img>
-              <Typography>
-                Alejandro
-                Data: <data > 04-04-24</data>
-              </Typography>
-            </Box>
-
-            <Box 
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-              <img></img>
-              <Typography>
-                Alejandro
-                Data: <data > 04-04-24</data>
-              </Typography>
-            </Box>
-
-            <Box 
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-              <img></img>
-              <Typography>
-                Alejandro
-                Data: <data > 04-04-24</data>
-              </Typography>
-            </Box>
-
-            <Box 
-                ml={8}
-                height={100}
-                width={100}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-              >
-              <img></img>
-              <Typography>
-                Alejandro
-                Data: <data > 04-04-24</data>
-              </Typography>
-            </Box>
+            {classDate && <ListClasses classesObj={classDate} />} 
         </div>
         </CardContent>
        </Card>

@@ -24,7 +24,7 @@ Cardcontent {
 }
 
 #box2 {
-    margin-left: 4rem;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     

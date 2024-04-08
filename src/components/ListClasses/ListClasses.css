@@ -1,0 +1,16 @@
+
+
+.classItem{
+
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    background-color: #e5e5e5;
+    width: 20%;
+ 
+    
+
+}

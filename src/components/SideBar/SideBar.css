@@ -1,9 +1,8 @@
 #sidebar{
-    /* z-index: 10;
-    position: fixed; */
+     z-index: 10;
+    position: fixed; 
     height: 100%;
     width: 8vw;
-    /* background-color: #cbdada; */
     background-color: rgb(234, 247, 246);
     left: 0;
     display: flex;
@@ -11,6 +10,7 @@
     justify-content: end;
     align-items: center;
     color: black;
+
 }
 
 #logout {
