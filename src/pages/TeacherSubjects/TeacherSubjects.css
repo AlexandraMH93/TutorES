@@ -1,0 +1,32 @@
+.subject {
+    background-color: rgba(243, 250, 249, 0.279);
+    color: black;
+    width: 150px;
+    height: 150px;
+    border-radius: 5px; 
+}
+
+#subjects {
+    color: black;
+    text-align: center;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+
+}
+
+#title {
+    width: 100%;
+}
+
+.subject {
+    background-color: rgba(243, 250, 249, 0.279);
+    color: black;
+    width: 150px;
+    height: 150px;
+    /*  border-radius: 5px; */
+}

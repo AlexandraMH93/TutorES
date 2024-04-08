@@ -5,7 +5,7 @@ const getTimeTable = async () => {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-  });
+  })
 
    return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
 };
@@ -25,10 +25,10 @@ const getStudent = async (id) => {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    });
+    })
   
-    return data;
-  };
+    return data
+  }
   
 
 const createTimeTable = async (timeData) => {
@@ -36,31 +36,34 @@ const createTimeTable = async (timeData) => {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-  });
+  })
    
-  return res;
-};
+  return res
+}
 
 const deleteTimeTable = async (timeId) => {
   const { data } = api.delete("/profile/timeTable/"+timeId, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-  });
+  })
   
-  return data;
-};
+  return data
+}
 
 const deleteClassDate = async (classId) => {
   const { data } = api.delete("/profile/classDate/"+classId, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-  });
+  })
   
-  return data;
-};
+  return data
+}
 
+const addSubject = async () => {
+  const { data } = api.post("/profile/subject/")
+  return data
+}
 
-
-export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable, deleteClassDate};
+export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable, deleteClassDate, addSubject}

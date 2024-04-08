@@ -1,0 +1,15 @@
+.subject {
+    background-color: rgba(243, 250, 249, 0.279);
+    color: black;
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+/*     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.avatar {
+    margin-left: 10px;
+}
