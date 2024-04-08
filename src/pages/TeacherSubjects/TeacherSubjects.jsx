@@ -8,7 +8,6 @@ import AddIcon from '@mui/icons-material/Add'
 
 
 export const TeacherSubjects = () => {
-    const [isChecked, setIsChecked] = useState(false)
     const [subjects, setSubjects] = useState([])
     const [listAddSubjects, setListAddSubjects] = useState([]) 
     
@@ -19,41 +18,46 @@ export const TeacherSubjects = () => {
         console.log(subjects)
 
     }
-    const handleCheck = async (e) => {
-      setIsChecked(e.target.value)
-      
-     
 
-    }
     
     const handleAddSubject = async (e) => {
-      setListAddSubjects(... [e.target.value])
+      setListAddSubjects([...e.target.value])
       console.log(listAddSubjects)
        /* const res2 = await addSubject()  añadir asignaturas al teacher */
+    }
+
+    const onAddSubjects = async (subjects) => {
+      subjects.map(async subject => await addSubject(subject))
     }
 
     useEffect(() => {handleSubjects()}, [])
     
   return (
     <Card id='subjects' > {/* defino lo que se va a mostrar en la pestaña de subjects para el teacher */}
-        <CardHeader title='Asignaturas'></CardHeader>
        
         <CardContent>
+          <Typography variant='h3'>Asignaturas</Typography>
           <Typography variant='h6'>Añadir asignaturas</Typography>
           <FormControl sx={{margin: '10px 0', display: 'flex', justifyContent: 'center'}}>
             <InputLabel id='ejem'>Asignatura</InputLabel>
-              <Select renderValue={(selected) => selected.join(', ')} labelId='ejem' input={<OutlinedInput label="Asignatura" />} id="addSubjects" multiple value={listAddSubjects} onChange={handleAddSubject}>
+              <Select renderValue={(selected) => selected.join(', ')} 
+                labelId='ejem' 
+                input={<OutlinedInput label="Asignatura" />} 
+                id="addSubjects" 
+                multiple value={listAddSubjects} 
+                onChange={handleAddSubject}>
+
                 {subjects.map((el, id) => {
                   return (
                     <MenuItem key={id} value={el.name}>
-                      {/* <Checkbox  checked={isChecked} onChange={(e) => {handleCheck(e)}}/> */}
+                      
                       <ListItemText primary={el.name} />
                     </MenuItem>
                   )}
                 )}
               </Select>
 
-              <IconButton><AddIcon></AddIcon></IconButton>
+              <IconButton onClick={()=> {onAddSubjects(listAddSubjects)}}><AddIcon></AddIcon></IconButton>
     
           </FormControl>
           

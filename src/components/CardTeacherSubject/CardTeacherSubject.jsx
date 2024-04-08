@@ -8,9 +8,9 @@ export const CardTeacherSubject = ({subjectName, subjectImgUrl}) => { /* hay que
   return (
    
       <Card className='subject'  > {/* defino la card de la subject del teacher */}
-                <CardContent sx={{display: 'flex', height:'100px', flexDirection: 'column',justifyContent: 'end'}}> 
+                <CardContent sx={{display: 'flex', height:'100px', flexDirection: 'column',alignItems: 'center'}}> 
                     <Typography>{subjectName}</Typography>
-                    <Avatar alt={subjectName} src={subjectImgUrl}></Avatar>
+                    <Avatar className='avatar' alt={subjectName} src={subjectImgUrl}></Avatar>
                 </CardContent>
 
                 <CardActions>

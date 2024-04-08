@@ -62,8 +62,16 @@ const deleteClassDate = async (classId) => {
   return data
 }
 
-const addSubject = async () => {
-  const { data } = api.post("/profile/subject/")
+const addSubject = async (subject) => {
+  const { data } = api.post("/profile/subject/", 
+    {
+      subject_id: subject.id
+    }, 
+    {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    }
+    })
   return data
 }
 
