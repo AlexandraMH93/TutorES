@@ -4,24 +4,12 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import avatarImg from "../../assets/images/defaultAvatar.png"
 import CircleIcon from "@mui/icons-material/Circle";
-
-import {
  
-  getStudent,
-  getSubject,
  
-} from "../../services/teacherService";
+const FirstClass = ({dateInfo, student, subject, classInfo}) => {
 
-const FirstClass = ({classObj}) => {
-
-  const [firstClass, setFirstClass] =useState()
-  const getClassData= async()=>{
-
-    const student = await getStudent(classObj.class_date.student_id);
-    const subject = await getSubject(classObj.class_date.subjectId);
-
-
-    setFirstClass (
+  return (
+  
       <Grid container spacing={2}>
           <Grid item xs={12} md={4} lg={4}>
             <img id="avatarImg" src={student.studentImg ? student.studentImg : avatarImg} />
@@ -39,7 +27,7 @@ const FirstClass = ({classObj}) => {
                   </Box>
                   <Box>
                     <Typography variant="h6"> Fecha</Typography>
-                    <Typography variant="body2">{classObj.date}</Typography>
+                    <Typography variant="body2">{dateInfo.date}</Typography>
                   </Box>
                 </Box>
               </Grid>
@@ -48,9 +36,9 @@ const FirstClass = ({classObj}) => {
                   <Box>
                     <CircleIcon color="primary" />
                   </Box>
-                  <Box>
+                  <Box> 
                     <Typography variant="h6"> Hora</Typography>
-                    <Typography variant="body2">{classObj.time}</Typography>
+                    <Typography variant="body2">{dateInfo.time}</Typography>
                   </Box>
                 </Box>
               </Grid>
@@ -58,7 +46,7 @@ const FirstClass = ({classObj}) => {
                 <Box className="dateElementContainer">
                   <Box>
                     <CircleIcon color="primary" />
-                  </Box>
+                  </Box> 
                   <Box>
                     <Typography variant="h6"> Tema</Typography>
                     <Typography variant="body2">{subject.name}</Typography>
@@ -75,7 +63,7 @@ const FirstClass = ({classObj}) => {
                       Comentario del estudiante
                     </Typography>
                     <Typography variant="body2">
-                      {classObj.class_date.comments}
+                    {classInfo.comments}
                     </Typography>
                   </Box>
                 </Box>
@@ -83,17 +71,7 @@ const FirstClass = ({classObj}) => {
             </Grid>
           </Grid>
         </Grid>
-    )
-
-  }
-
-  useEffect(()=>{getClassData()},[])
-
-
-  return (
-    <div>
-      {firstClass}
-    </div>
+  
   )
 }
 

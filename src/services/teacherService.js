@@ -16,7 +16,7 @@ const getStudent = async (id) => {
         Authorization: localStorage.getItem("token"),
       },
     });
-  
+   
     return data;
   };
 
