@@ -1,10 +1,8 @@
-import { Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField } from "@mui/material"
+import { Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField, Typography, Divider } from "@mui/material"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../../services/authService"
 import { Email, Lock, VisibilityOff } from "@mui/icons-material"
-import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
 
 const Login = () => {
     const [email, setEmail] = useState('')

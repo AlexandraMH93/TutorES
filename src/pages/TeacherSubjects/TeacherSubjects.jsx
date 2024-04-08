@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { ListSubjects } from '../../components/ListSubjects/ListSubjects'
 import { getAllSubjects } from '../../services/subjectService'
 
