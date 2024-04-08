@@ -1,6 +1,22 @@
 .class {
     display: flex;
     justify-content: center;
-    height: 20vh;
-    width: 100vw;
+    height: 95vh;
+    width: 98vw;
+}
+
+Cardcontent {
+    margin-left: 10px;
+}
+
+#button{
+    display: flex;
+    justify-content: end;
+}
+
+#box1 {
+    margin-left: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    
 }
