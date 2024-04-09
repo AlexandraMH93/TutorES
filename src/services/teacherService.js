@@ -62,10 +62,10 @@ const deleteClassDate = async (classId) => {
   return data
 }
 
-const addSubject = async (subject) => {
+const addSubject = async (subjectId) => {
   const { data } = api.post("/profile/subject/", 
     {
-      subject_id: subject.id
+      subject_id: subjectId
     }, 
     {
     headers: {
@@ -75,4 +75,23 @@ const addSubject = async (subject) => {
   return data
 }
 
-export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable, deleteClassDate, addSubject}
+const teacherSubjects = async () => {
+   const { data } = await api.get("/profile/subject/", {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+  return data
+}
+
+const deleteTeacherSubject = async (subjectId) => {
+  const { data } = api.delete("/profile/subject/"+subjectId, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+  
+  return data
+}
+
+export { getTimeTable, createTimeTable, getStudent,  getSubject, deleteTimeTable, deleteClassDate, addSubject, teacherSubjects, deleteTeacherSubject}
