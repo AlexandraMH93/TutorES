@@ -26,7 +26,7 @@ export const CardTeacherSubject = ({subjectName, subjectId, subjectImgUrl, onDel
         ></Avatar>
       </CardContent>
       <CardActions>
-        <Button onClick={() => onDelete(subjectId)}>Delete</Button>
+        <Button onClick={() => onDelete(subjectId)}>Borrar</Button>
       </CardActions>
     </Card>
   )
