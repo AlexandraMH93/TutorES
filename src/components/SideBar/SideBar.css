@@ -13,21 +13,11 @@
 
 }
 
-#logout {
-    
-}
-
 #sidebarLinks{
-
     margin-top: 13vh;
     width:80%;
-
 }
 
-.sideBarOption{
-    
-  
-}
 .sideBarOption a{
     display: flex;
     flex-direction: column;
@@ -39,15 +29,18 @@
 }
 
 .sideBarOption svg{
-
     font-size:40px
 } 
 
 
 #sidebarLinks{
-
     display: flex;
     flex-direction: column;
     gap: 40px
+}
 
+.sideBarOption:hover {
+    scale: 1.02;
+    filter: brightness(1.4);
+   /*  box-shadow: 0 0 10px #284845; */
 }

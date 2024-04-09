@@ -96,14 +96,7 @@ const SideBar = () => {
             </Link>
           </Box>
         </>
-
-
-
-
-        )
-        
-        
-        }
+        )}
       </Box>
 
       <Box>
