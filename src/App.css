@@ -60,6 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  
 
 }
 
@@ -69,6 +70,7 @@ body {
   display: flex;
   justify-content: space-between;
   
+  
 }
 
 #mainContainer{
@@ -77,6 +79,7 @@ body {
   margin-left: 8vw;
   margin-top:10vh;
   overflow-y: scroll;
+  
   
 }
  

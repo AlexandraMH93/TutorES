@@ -7,13 +7,18 @@
     width: 100vw;
     position: fixed; 
     z-index: 20; 
-    background-color: #41D4D4;
+    /* background-color: #41D4D4; */
+    background-color: #284845;
+    
     z-index: 50;
     
 }
 
 #logo{
-    width: 13%;
+    width: 12%;
+    border-radius: 5px;
+    /* filter: brightness(1.4); */
+    margin-left: 10px;
 }
 
 #book {

@@ -1,6 +1,7 @@
 import {
   Typography,
-  Box, ListItemText,
+  Box,
+  ListItemText,
   MenuItem,
   Divider,
   OutlinedInput,
@@ -10,6 +11,7 @@ import {
   InputLabel,
   Select,
   IconButton,
+  Button,
 } from "@mui/material"
 import { useEffect, useState } from "react"
 import { ListSubjects } from "../../components/ListSubjects/ListSubjects"
@@ -84,11 +86,14 @@ export const TeacherSubjects = () => {
   useEffect(() => { handleTeacherSubjects() }, [dataBaseTeacherSubjects])
 
   return (
-    <Card id="subjects">
+    <Card id="subjects" /* sx={{width: '80vw', height: '100vh'}} */>
       <CardContent>
         <Typography sx={{ m: 2 }} variant="h3">
           Asignaturas
         </Typography>
+
+        <Divider sx={{ m: 2 }} />
+
         <Typography sx={{ m: 2 }} variant="h6">
           Mis asignaturas
         </Typography>
@@ -106,16 +111,18 @@ export const TeacherSubjects = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            height: "50px",
           }}
         >
           <FormControl
             sx={{
-              margin: "10px 0",
-              width: '90%'
+              height: "100%",
+              width: "90%",
             }}
           >
             <InputLabel id="ejem">Asignatura</InputLabel>
             <Select
+              sx={{ height: "100%" }}
               renderValue={(selected) => selected.join(", ")}
               labelId="ejem"
               input={<OutlinedInput label="Asignatura" />}
@@ -135,15 +142,20 @@ export const TeacherSubjects = () => {
               })}
             </Select>
           </FormControl>
-
-          <IconButton
-            sx={{ width: "10%"}}
+          <Button
+            sx={{
+              width: "30px",
+              height: "100%",
+              alignSelf: "center",
+              fontWeight: "bolder",
+            }}
+            variant="outlined"
             onClick={() => {
               onAddSubjects()
             }}
           >
-            <AddIcon></AddIcon>
-          </IconButton>
+            <AddIcon />
+          </Button>
         </Box>
       </CardContent>
     </Card>
