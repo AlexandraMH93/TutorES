@@ -4,20 +4,43 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from '@fullcalendar/core/locales/es'
 import { useEffect, useState } from 'react';
+import { useContext } from 'react'
+import { BookingContext } from '../../Context/Booking'
 
-const BookingCalendar = (dates) => {
+
+const BookingCalendar = ({dates}) => {
 
     const [events,setEvents] = useState([]);
-    
+    const {booking,setBooking}= useContext(BookingContext)
 
+    const loadEvents= ()=>{
+ 
+      
+      const newDates= dates.filter((value, index, self) => (index === self.findIndex((t) => ( t.date === value.date && t.time === value.time))))
+      setEvents(newDates.map((element)=>{ return {
+      id: element.id,
+      title: "Hora Disponible",
+      start: element.date + "T" + element.time,
+      extendedProps: {
+        timeTable: element
+        
+      },
+    }}))
+    }
 
   const handleEventClick = (eventInfo)=>{
 
-
+    setBooking((prev)=>{return {...prev, date: eventInfo.event.extendedProps.timeTable }})
 
 
   }
 
+  useEffect(()=>{
+
+    dates && loadEvents()
+
+  },
+  [dates])
 
  
 
@@ -25,28 +48,11 @@ const BookingCalendar = (dates) => {
   const renderEventContent = (eventContent) => {
     return (
       <Box
-        className={
-          eventContent.event.extendedProps.subject
-            ? "evenContainer classContainer"
-            : "evenContainer dateContainer"
-        }
+        className="evenContainer classContainer"  
       >
         <Typography variant="h6" color="secondary" className="eventTitle">
           {eventContent.event.title}
         </Typography>
-        {eventContent.event.extendedProps.subject ? (
-          <Typography color="secondary" variant="h7">
-            
-            Asignatura: {eventContent.event.extendedProps.subject}
-          </Typography>
-        ) : (
-          <Button
-            variant="text"
-            onClick={() => deleteSchedule(eventContent.event.id)}
-          >
-            Eliminar clase
-          </Button>
-        )}
       </Box>
     );
   };
