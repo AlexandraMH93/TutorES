@@ -12,7 +12,7 @@ export const ListSubjects = ({ subjectsObj, onDelete }) => {
             <CardTeacherSubject
               key={idx}
               subjectName={element.name}
-              subjectImgUrl={element.url}
+              subjectImgUrl={element.subjectImage}
               subjectId={element.id}
               onDelete={(id) => onDelete(id)}
             />

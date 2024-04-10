@@ -86,43 +86,47 @@ import AddIcon from "@mui/icons-material/Add"
   useEffect(() => { handleTeacherSubjects() }, [dataBaseTeacherSubjects])
 
   return (
-    <Card id="subjects" /* sx={{width: '80vw', height: '100vh'}} */>
-      <CardContent>
-        <Typography sx={{ m: 2 }} variant="h3">
+    <Box id="subjects-page" /* sx={{width: '80vw', height: '100vh'}} */>
+      <Box sx={{ width: "90%", height: "90%" }}>
+        <Typography sx={{ m: 2, textAlign: "start" }} variant="h4">
           Asignaturas
         </Typography>
 
         <Divider sx={{ m: 2 }} />
 
-        <Typography sx={{ m: 2 }} variant="h6">
+        <Typography sx={{ m: 2, textAlign: "start" }} variant="h6">
           Mis asignaturas
         </Typography>
+
         <ListSubjects
-          sx={{ m: 2 }}
+        
           subjectsObj={dataBaseTeacherSubjects}
           onDelete={(id) => onDelete(id)}
         />
         <Divider sx={{ m: 2 }} />
-        <Typography sx={{ m: 2 }} variant="h6">
+
+        <Typography sx={{ m: 2, textAlign: "start" }} variant="h6">
           Añadir asignaturas
         </Typography>
+
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
+            justifyContent: "start",
             height: "50px",
           }}
         >
           <FormControl
             sx={{
               height: "100%",
-              width: "90%",
+              width: "80%",
+              marginLeft: "10px",
             }}
           >
             <InputLabel id="ejem">Asignatura</InputLabel>
             <Select
-              sx={{ height: "100%" }}
+              sx={{ height: "100%", width: "100%" }}
               renderValue={(selected) => selected.join(", ")}
               labelId="ejem"
               input={<OutlinedInput label="Asignatura" />}
@@ -142,6 +146,7 @@ import AddIcon from "@mui/icons-material/Add"
               })}
             </Select>
           </FormControl>
+
           <Button
             sx={{
               width: "30px",
@@ -157,8 +162,8 @@ import AddIcon from "@mui/icons-material/Add"
             <AddIcon />
           </Button>
         </Box>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,10 +1,11 @@
 import React from 'react'
+import { Box } from '@mui/material';
 
 const TeacherProfile = () => {
   return (
-    <div>
+    <Box>
       Perfil
-    </div>
+    </Box>
   )
 }
 

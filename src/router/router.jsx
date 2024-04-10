@@ -7,58 +7,58 @@ import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
 import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
 import TeacherClasses from "../pages/TeacherClasses/TeacherClasses"
 import StudentClasses from "../pages/StudentClasses/StudentClasses"
+import TeacherProfile from "../pages/TeacherProfile/TeacherProfile"
 
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <AuthLayout />,
-        children: [
-            {
-                path: '',
-                element: <Login />
-            },
-            {
-                path: '/signup',
-                element: <SignUp />
-            }
-        ]
-    },
-    {
-        path: '/teacher',
-        element: <MainLayout />,
-        children: [
-            {
-                path: '',
-                element: <TeacherCalendar />
-            },
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: "/teacher",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "",
+        element: <TeacherCalendar />,
+      },
 
-            {
-                path: 'subjects',
-                element: <TeacherSubjects />
-            },
-            {
-                path: 'classes',
-                element: <TeacherClasses />
-            }
+      {
+        path: "subjects",
+        element: <TeacherSubjects />,
+      },
+      {
+        path: "classes",
+        element: <TeacherClasses />,
+      },
+      {
+        path: "profile",
+        element: <TeacherProfile />,
+      },
+    ],
+  },
+  {
+    path: "/student",
+    element: <MainLayout />,
 
-        ]
-
-    },
-    {
-        path: '/student',
-        element: <MainLayout />,
-
-        children: [
-            {
-                path: '',
-                element: <StudentClasses/>
-            },
-            
-        ]
-       
-    }
-
+    children: [
+      {
+        path: "",
+        element: <StudentClasses />,
+      },
+    ],
+  },
 ])
 
 export default router
