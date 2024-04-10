@@ -101,7 +101,7 @@ if(localStorage.getItem("role")=="student"){
         </Grid>
       </CardContent>
       <CardActions id="firstCardAction">
-        <Link href={"mailto:" + dateInfo.email} color="secondary" underline="none">
+        <Link href={"mailto:" + dateInfo.timetableId.teacherId.userId.email} color="secondary" underline="none">
           Contactar profesor
         </Link>
         <Button onClick={() => handleDeleteStudentButton()} variant="contained" color="warning"> Eliminar Clase </Button>
@@ -180,7 +180,7 @@ if(localStorage.getItem("role")=="student"){
           <Link href={"mailto:" + dateInfo.class_date.userId.email} color="secondary" underline="none">
             Contactar profesor
           </Link>
-          <Button onClick={() => handleDeleteStudentButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+          <Button onClick={() => handleDeleteTeacherButton()} variant="contained" color="warning"> Eliminar Clase </Button>
         </CardActions>
       </Card>
   

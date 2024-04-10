@@ -26,7 +26,7 @@ const Classes = () => {
     }else{
       result= await getTimeTable()
       sortResult=result.filter((element)=>element.class_date).sort((a,b)=>{ return new Date(a.date+"T"+a.time).getTime() - new Date(b.date+"T"+b.time).getTime()} )
-      
+
     }
 
 
@@ -51,7 +51,7 @@ const Classes = () => {
     <Box id="mainContainer">
       <Box id="BookingContainer">
         <Typography variant="h4"> Mi siguiente clase </Typography>
-        {firstClass && <FirstClass dateInfo={firstClass} classDate={classDate} setClassDates={setClassDate} setFirstClass={setFirstClass}/>}
+        {firstClass  ? <FirstClass dateInfo={firstClass} classDate={classDate} setClassDates={setClassDate} setFirstClass={setFirstClass}/> :  <Typography variant="h5"> Aún no tienes ninguna clase </Typography> }
         <Typography variant="h4" > Mis otras Clases </Typography>
         { classDate && <ListClasses classesObj={classDate} setcurrentDateInfo={setcurrentDateInfo} setOpen={setOpen} />}
       </Box>
