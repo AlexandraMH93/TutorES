@@ -11,7 +11,7 @@ export const themeOptions =  createTheme({
     },
     background: {
       default: '#ffffff',
-      paper: 'rgba(243, 250, 249, 0.279)',
+      /* paper: 'rgba(243, 250, 249, 0.279)', */
     },
     success: {
       main: '#90f395',
