@@ -28,38 +28,42 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Opacity } from "@mui/icons-material";
 
 //Importación Cumpleaños
-/* import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'; */
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'; 
 
 const SignUp = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [secondLastname, setSecondLastname] = useState("");
   const [gender, setGender] = useState("");
-  const [birth, setBirth] = useState("");
+  const [birthDate, setbirthDate] = useState(new Date('2014-08-18T21:11:54'));
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async () => {
     const res = await signUp({
+      firstname,
+      lastname,
+      secondLastname,
+      birthDate,
+      gender,
       email,
-      name: { firstname, lastname },
-      username,
+      phone,
+      location,
+      role,
       password,
     });
     localStorage.setItem("token", res.token);
     localStorage.setItem("role", res.role);
-    navigate("/login");
-  };
-
-  const handleBirth = (event) => {
-    setBirth(event.target.value);
+    navigate("");
   };
 
   
@@ -107,21 +111,39 @@ const SignUp = () => {
             onChange={(e) => setLastname(e.target.value)}
           ></TextField>
         
-            <TextField
-              type="text"
-              variant="filled"
-              label="Usuario/a"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <PersonIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setUsername(e.target.value)}
-            ></TextField>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={['DatePicker']}>
+            <DatePicker label="Basic date picker" />
+          </DemoContainer>
+       </LocalizationProvider> 
+
+       {/*   <form>
+      <label htmlFor="birthdate">Fecha de nacimiento:</label>
+      <input
+        type="date"
+        id="birthdate"
+        name="birthdate"
+        value={birthDate}
+        onChange={(e) => setbirthDate(e.target.value)}
+      />
+    </form> */}
+
+{/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+<KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="birthDate"
+          label="Fecha de nacimiento"
+          value={birthDate}
+          onChange={(e)=> setbirthDate(e.target.value)}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+
+    </MuiPickersUtilsProvider> */}
 
           <TextField
             type="email"
@@ -197,5 +219,7 @@ const SignUp = () => {
     </div>
   );
 };
+
+
 
 export default SignUp;
