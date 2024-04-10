@@ -21,6 +21,8 @@ import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
 import CreateIcon from '@mui/icons-material/Create';
 import TransgenderIcon from '@mui/icons-material/Transgender';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import './SignUp.css'
 
 //Importación del desplegable Género
@@ -111,11 +113,7 @@ const SignUp = () => {
             onChange={(e) => setLastname(e.target.value)}
           ></TextField>
         
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker label="Basic date picker" />
-          </DemoContainer>
-       </LocalizationProvider> 
+  
 
        {/*   <form>
       <label htmlFor="birthdate">Fecha de nacimiento:</label>
@@ -171,10 +169,58 @@ const SignUp = () => {
                     <LockIcon />
                   </Icon>
                 </InputAdornment>
-              )}}
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Icon>
+                    <VisibilityOffIcon />
+                  </Icon>
+                </InputAdornment>
+              ),
+            }}
             onChange={(e) => setPassword(e.target.value)}
           ></TextField>
+
+            <TextField
+              type="text"
+              variant="filled"
+              label="Phone"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Icon>
+                      <PhoneIcon />
+                    </Icon>
+                  </InputAdornment>
+                ),
+              }}
+              onChange={(e) => setPhone(e.target.value)}
+            ></TextField>
+
+           <TextField
+            type="text"
+            variant="filled"
+            label="Location"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Icon>
+                    <LocationOnIcon />
+                  </Icon>
+                </InputAdornment>
+              ),
+            }}
+            
+            onChange={(e) => setFirstname(e.target.value)}
+          ></TextField>
            </FormControl>
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={['DatePicker']}>
+              <DatePicker label="Basic date picker" />
+            </DemoContainer>
+          </LocalizationProvider> 
+
            <FormControl >
         <InputLabel id="gender">Género</InputLabel>
         <Select
