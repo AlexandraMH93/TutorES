@@ -1,0 +1,32 @@
+.class {
+    display: flex;
+    justify-content: center;
+    height: 95vh;
+    width: 98vw;
+}
+
+Cardcontent {
+    margin-left: 10px;
+}
+
+#button{
+    display: flex;
+    justify-content: end;
+}
+
+#box1 {
+    background-color: rgb(190, 190, 190);
+    margin-top: 10px;
+}
+
+.cancel {
+    background-color: rgb(248, 154, 154);
+}
+
+#box2 {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+

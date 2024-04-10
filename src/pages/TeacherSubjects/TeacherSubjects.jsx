@@ -20,7 +20,7 @@ import { addSubject, deleteTeacherSubject, teacherSubjects } from "../../service
 import "./TeacherSubjects.css"
 import AddIcon from "@mui/icons-material/Add"
 
-export const TeacherSubjects = () => {
+ const TeacherSubjects = () => {
   const [subjects, setSubjects] = useState([]) //todas las asignaturas de la base de datos
   const [dataBaseTeacherSubjects, setdataBaseTeacherSubjects] = useState([]) //todas las asignaturas del profesor de la base de datos
   const [currentSubjects, setCurrentSubjects] = useState([]) //asignaturas actuales del profesor que se muestran en mis asignaturas
@@ -161,3 +161,5 @@ export const TeacherSubjects = () => {
     </Card>
   )
 }
+
+export default TeacherSubjects

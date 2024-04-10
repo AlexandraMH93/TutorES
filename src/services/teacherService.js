@@ -7,19 +7,18 @@ const getTimeTable = async () => {
     },
   })
 
- 
-  return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() })
-}
+   return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
+};
 
 const getStudent = async (id) => {
     const { data } = await api.get("/user/"+id, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    })
-  
-    return data
-  }
+    });
+   
+    return data;
+  };
 
   const getSubject = async (id) => {
     const { data } = await api.get("/subject/"+id, {
