@@ -8,7 +8,7 @@ import { getTimeTableBySubject, getTeachersByDate } from '../../services/student
 import ListTeachers from '../../components/ListTeachers/ListTeachers';
 import ClassDetails from '../../components/ClassDetails/ClassDetails';
 import Typography from "@mui/material/Typography";
-
+import "./BookingClass.css"
 
 const BookingClass = () => {
 
@@ -23,7 +23,11 @@ const BookingClass = () => {
     const getSubjects = async () => {
 
         const results = await getAvailableSubjects()
-        const array = results.filter((elem) => { if (elem.teacherId.subjects.length > 0) return true })
+        
+        const array = results.filter((elem) => { 
+         
+            if (elem.teacherId.subjects.length > 0 && new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() )
+             return true })
         const newSubjects = []
         array.forEach((elem) => {
              
@@ -36,7 +40,7 @@ const BookingClass = () => {
     }
 
     const handleSubject = async () => {
-        if (booking.subject != "") {
+        if (booking.subject != "" && booking.teacher=="" && booking.date=="") {
             setOptions(true)
             setValue(1)
             const result = await getTimeTableBySubject(booking.subject.id)
@@ -77,7 +81,7 @@ const BookingClass = () => {
 
     useEffect(() => {
         handleSubject()
-    }, [booking.subject])
+    }, [booking])
 
 
     useEffect(() => {
@@ -89,9 +93,7 @@ const BookingClass = () => {
     }, [booking.teacher])
 
 
-    useEffect(() => {
-        console.log(booking)
-    }, [booking])
+   
 
 
     return (

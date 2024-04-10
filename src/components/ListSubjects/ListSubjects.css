@@ -1,6 +1,6 @@
 #subjectsCard-container {
     display: flex;
-    /* flex-direction: column;  */
+    padding:2%;
     justify-content: center; 
     flex-wrap: wrap;
     width: 100%;

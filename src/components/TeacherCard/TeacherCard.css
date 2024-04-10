@@ -1,0 +1,33 @@
+.teacherCard {
+    background-color: rgba(243, 250, 249, 0.279);
+    color: black;
+    width: 25%;
+    height: 25vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    cursor: pointer;
+}
+
+
+
+.teacherContainer{
+
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto !important;
+    gap: 5px;
+
+}
+
+.teacherContainer .MuiAvatar-root{
+
+    width:100px;
+    height: 100px;
+
+}

@@ -8,14 +8,14 @@ const CardStudentSubject = ({ subject }) => {
   const { setBooking } = useContext(BookingContext)
 
   const subjectHandler = () => {
-    setBooking((prev) => { return { ...prev, subject: subject } })
+    setBooking({  subject: subject , date:"", teacher:""} )
   }
 
   return (
     <Card className='bookingSubject' onClick={() => subjectHandler()}>
       <CardContent className='subjectContainer'>
         <Avatar alt={subject.name} src={subject.subjectImage}></Avatar>
-        <Typography variant="h5">{subject.name}</Typography>
+        <Typography variant="h6">{subject.name}</Typography>
       </CardContent>
     </Card>
   )

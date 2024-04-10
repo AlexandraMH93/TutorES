@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import   { useState } from 'react'
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+ 
 import TextField from '@mui/material/TextField';
 import avatarImg from "../../assets/images/defaultAvatar.png"
 import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
 import { styled } from '@mui/system';
+import { Avatar, Card, CardContent, Typography } from '@mui/material'
+
 import { createClassDate } from '../../services/studentService';
 import { useNavigate } from "react-router-dom"
-
-
+import "./ClassDetails.css"
 
 const ClassDetails = ({ bookingDetail }) => {
 
@@ -28,16 +27,17 @@ const ClassDetails = ({ bookingDetail }) => {
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} md={8} lg={8}>
-        <Typography variant="h4">Información del profesor</Typography>
-        <Card id="teacherBookingInfo">
+        <Typography variant="h5">Información del profesor</Typography>
+        <Card className="teacherBookingCard">
           <CardContent>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6} lg={6}>
-                <img id="avatarImg" src={avatarImg} />
+              <Grid item xs={12} md={4} lg={4}>
+              <Avatar alt={bookingDetail.teacher.userId.firstName} src={bookingDetail.teacher.userId.userImg}></Avatar>
+
               </Grid>
-              <Grid item xs={12} md={6} lg={6}>
-              <Typography variant="h5">{bookingDetail.teacher.userId.firstName+" "+bookingDetail.teacher.userId.lastName }</Typography>
-              <Typography variant="body1"><strong>Descripción del profesor:</strong>{bookingDetail.teacher.description}</Typography>
+              <Grid item xs={12} md={8} lg={8} id="teacherCardInfo">
+              <Typography variant="h6">{bookingDetail.teacher.userId.firstName+" "+bookingDetail.teacher.userId.lastName }</Typography>
+              <Typography variant="body1"><strong>Descripción del profesor: </strong>{bookingDetail.teacher.description}</Typography>
               </Grid>
             </Grid>
           </CardContent>
@@ -46,23 +46,23 @@ const ClassDetails = ({ bookingDetail }) => {
       </Grid>
 
 
-      <Grid id="teacherBookingInfo" item xs={12} md={4} lg={4}>
-        <Typography variant="h4">Información de la reserva</Typography>
-        <Card>
+      <Grid item xs={12} md={4} lg={4}>
+        <Typography variant="h5">Información de la reserva</Typography>
+        <Card className="teacherBookingCard" >
           <CardContent>
             <Grid container spacing={2}>
               <Grid item xs={12} md={12} lg={12}>
-              <Typography variant="h5">Asignatura</Typography>
+              <Typography variant="h6">Asignatura</Typography>
               <Typography variant="body1">{bookingDetail.subject.name}</Typography>
-              <Typography variant="h5">Fecha</Typography>
+              <Typography variant="h6">Fecha</Typography>
               <Typography variant="body1">{bookingDetail.date.date}</Typography>
-              <Typography variant="h5">Hora</Typography>
+              <Typography variant="h6">Hora</Typography>
               <Typography variant="body1">{bookingDetail.date.time}</Typography>
-              <Typography variant="h5">Precio</Typography>
+              <Typography variant="h6">Precio</Typography>
               <Typography variant="body1">{bookingDetail.teacher.price}€</Typography>
-              <Typography variant="h5">Comentario</Typography>
-              <BaseTextareaAutosize onChange={(e)=>setComment(e.target.value)} minRows={3} > </BaseTextareaAutosize>
-              <Button onClick={()=>handleButton()} variant="contained" color="primary">Confirmar cita</Button>
+              <Typography variant="h6">Comentario</Typography>
+              <BaseTextareaAutosize aria-label="maximum height"   onChange={(e)=>setComment(e.target.value)} id="commentTextArea" minRows={5} > </BaseTextareaAutosize>
+              <Button onClick={()=>handleButton()} id="confirmButton" sx={{color:"white"}}variant="contained" color="primary">Confirmar cita</Button>
 
               </Grid>
             </Grid>

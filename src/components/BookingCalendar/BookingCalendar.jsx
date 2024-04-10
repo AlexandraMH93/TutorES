@@ -6,7 +6,7 @@ import esLocale from '@fullcalendar/core/locales/es'
 import { useEffect, useState } from 'react';
 import { useContext } from 'react'
 import { BookingContext } from '../../Context/Booking'
-
+import "./BookingCalendar.css"
 
 const BookingCalendar = ({dates}) => {
 
@@ -61,9 +61,9 @@ const BookingCalendar = ({dates}) => {
 
 
   return (
-    <>
-    <Box id="calendarContainer">
-      <Typography variant="h4"> Escoge una fecha</Typography>
+     
+    <Box id="bookingCalendarContainer">
+      <Typography variant="h5"> Escoge una fecha</Typography>
         <FullCalendar
           headerToolbar={{start:'', center:'title', end:'today prev,next' }}
           locale={esLocale}
@@ -90,7 +90,7 @@ const BookingCalendar = ({dates}) => {
         />
       </Box>
     
-    </>
+    
   )
 }
 
