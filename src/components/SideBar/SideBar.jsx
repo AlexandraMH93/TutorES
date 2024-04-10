@@ -88,7 +88,7 @@ const SideBar = () => {
             </Link>
           </Box>
           <Box className="sideBarOption">
-            <Link to="/student/subjects" onClick={()=>colorController("subjects")}>
+            <Link to="/student/booking" onClick={()=>colorController("subjects")}>
               <BookmarkBorderOutlinedIcon color={currentPage.subjects} />
               <Typography color="secondary" variant="body1">
                 Reserva una clase

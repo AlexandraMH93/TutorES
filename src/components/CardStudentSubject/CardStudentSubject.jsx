@@ -1,11 +1,24 @@
-import React from 'react'
+import { useContext } from 'react'
+import { BookingContext } from '../../Context/Booking'
+import { Avatar, Card, CardContent, Typography } from '@mui/material'
 
-const StudentSubject = () => {
+import "./CardSudentSubject.css"
+
+const CardStudentSubject = ({ subject }) => {
+  const { setBooking } = useContext(BookingContext)
+
+  const subjectHandler = () => {
+    setBooking({  subject: subject , date:"", teacher:""} )
+  }
+
   return (
-    <div>
-      
-    </div>
+    <Card className='bookingSubject' onClick={() => subjectHandler()}>
+      <CardContent className='subjectContainer'>
+        <Avatar alt={subject.name} src={subject.subjectImage}></Avatar>
+        <Typography variant="h6">{subject.name}</Typography>
+      </CardContent>
+    </Card>
   )
 }
 
-export default StudentSubject
+export default CardStudentSubject
