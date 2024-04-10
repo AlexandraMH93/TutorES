@@ -10,6 +10,17 @@ const getTimeTable = async () => {
    return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
 };
 
+
+const getClassDate= async () => {
+  const { data } = await api.get("/profile/teacherClassDate/", {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+
+   return data.filter((elem)=>{ return new Date(elem.date+"T"+elem.time).getTime() >  new Date().getTime() });
+};
+
 const getStudent = async (id) => {
     const { data } = await api.get("/user/"+id, {
       headers: {

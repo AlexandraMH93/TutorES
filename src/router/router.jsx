@@ -5,8 +5,7 @@ import SignUp from "../pages/SignUp/SignUp"
 import MainLayout from "../layouts/MainLayout"
 import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
 import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
-import TeacherClasses from "../pages/TeacherClasses/TeacherClasses"
-import StudentClasses from "../pages/StudentClasses/StudentClasses"
+ import Classes from "../pages/Classes/Classes"
 import BookingClass from "../pages/BookingClass/BookingClass"
 
 
@@ -40,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'classes',
-                element: <TeacherClasses />
+                element: <Classes />
             }
 
         ]
@@ -53,7 +52,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '',
-                element: <StudentClasses/>
+                element: <Classes/>
             },
             {
                 path: 'booking',

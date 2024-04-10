@@ -1,24 +1,52 @@
 import React, { useEffect, useState } from 'react'
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import avatarImg from "../../assets/images/defaultAvatar.png"
-import CircleIcon from "@mui/icons-material/Circle";
- 
- 
-const FirstClass = ({dateInfo, student, subject, classInfo}) => {
 
-  return (
-  
-      <Grid container spacing={2}>
-          <Grid item xs={12} md={4} lg={4}>
-            <img id="avatarImg" src={student.studentImg ? student.studentImg : avatarImg} />
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+import CircleIcon from "@mui/icons-material/Circle";
+import { Avatar, Card, CardContent, Typography, Box, CardActions, Button } from '@mui/material'
+import { deleteClassDate, deleteTimeTable } from '../../services/teacherService';
+import "./FirstClass.css"
+
+const FirstClass = ({ dateInfo, setClassDates, setFirstClass ,classDate}) => {
+ 
+  const handleDeleteStudentButton = async () => {
+
+    const result = await deleteClassDate(dateInfo.id)
+    const result2 = await deleteTimeTable(dateInfo.timetableId.id)
+    const newClasses= classDate.filter((elem) => elem.id !== parseInt(dateInfo.id))
+    
+    setClassDates(newClasses)
+    setFirstClass(newClasses[0])
+    
+    
+  }
+ 
+  const handleDeleteTeacherButton = async () => {
+
+    const result = await deleteClassDate(dateInfo.class_date.id)
+    const result2 = await deleteTimeTable(dateInfo.id)
+    const newClasses= classDate.filter((elem) => elem.id !== parseInt(dateInfo.id))
+    
+    setClassDates(newClasses)
+    setFirstClass(newClasses[0])
+    
+    
+  }
+  console.log(dateInfo)
+
+if(localStorage.getItem("role")=="student"){
+   return (
+    <Card id="firstClassCard">
+      <CardContent id="firstClassCardContent"> 
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={3} lg={3} >
+            <Avatar id="avatarImg" src={dateInfo.timetableId.teacherId.userId.profileImage} />
           </Grid>
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid item xs={12} md={9} lg={9}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={12} lg={12}>
                 <Typography variant="body2">Clase con</Typography>
-                <Typography variant="h4"> {student.firstName}</Typography>
+                <Typography variant="h5"> {dateInfo.timetableId.teacherId.userId.firstName + " " + dateInfo.timetableId.teacherId.userId.lastName}</Typography>
               </Grid>
               <Grid item xs={12} md={6} lg={6}>
                 <Box className="dateElementContainer">
@@ -27,7 +55,7 @@ const FirstClass = ({dateInfo, student, subject, classInfo}) => {
                   </Box>
                   <Box>
                     <Typography variant="h6"> Fecha</Typography>
-                    <Typography variant="body2">{dateInfo.date}</Typography>
+                    <Typography variant="body2">{dateInfo.timetableId.date}</Typography>
                   </Box>
                 </Box>
               </Grid>
@@ -36,9 +64,9 @@ const FirstClass = ({dateInfo, student, subject, classInfo}) => {
                   <Box>
                     <CircleIcon color="primary" />
                   </Box>
-                  <Box> 
+                  <Box>
                     <Typography variant="h6"> Hora</Typography>
-                    <Typography variant="body2">{dateInfo.time}</Typography>
+                    <Typography variant="body2">{dateInfo.timetableId.time}</Typography>
                   </Box>
                 </Box>
               </Grid>
@@ -46,15 +74,15 @@ const FirstClass = ({dateInfo, student, subject, classInfo}) => {
                 <Box className="dateElementContainer">
                   <Box>
                     <CircleIcon color="primary" />
-                  </Box> 
+                  </Box>
                   <Box>
                     <Typography variant="h6"> Tema</Typography>
-                    <Typography variant="body2">{subject.name}</Typography>
+                    <Typography variant="body2">{dateInfo.subject.name}</Typography>
                   </Box>
                 </Box>
               </Grid>
               <Grid item xs={12} md={12} lg={12}>
-                   <Box className="dateElementContainer">
+                <Box className="dateElementContainer">
                   <Box>
                     <CircleIcon color="primary" />
                   </Box>
@@ -63,7 +91,7 @@ const FirstClass = ({dateInfo, student, subject, classInfo}) => {
                       Comentario del estudiante
                     </Typography>
                     <Typography variant="body2">
-                    {classInfo.comments}
+                      {dateInfo.comments}
                     </Typography>
                   </Box>
                 </Box>
@@ -71,8 +99,98 @@ const FirstClass = ({dateInfo, student, subject, classInfo}) => {
             </Grid>
           </Grid>
         </Grid>
+      </CardContent>
+      <CardActions id="firstCardAction">
+        <Link href={"mailto:" + dateInfo.email} color="secondary" underline="none">
+          Contactar profesor
+        </Link>
+        <Button onClick={() => handleDeleteStudentButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+      </CardActions>
+    </Card>
+
+  )}
+  else{
+
+    return (
+      <Card id="firstClassCard">
+        <CardContent id="firstClassCardContent"> 
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={3} lg={3} >
+              <Avatar id="avatarImg" src={dateInfo.class_date.userId.profileImage} />
+            </Grid>
+            <Grid item xs={12} md={9} lg={9}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={12} lg={12}>
+                  <Typography variant="body2">Clase con</Typography>
+                  <Typography variant="h5"> {dateInfo.class_date.userId.firstName + " " + dateInfo.class_date.userId.lastName}</Typography>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                  <Box className="dateElementContainer">
+                    <Box>
+                      <CircleIcon color="primary" />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6"> Fecha</Typography>
+                      <Typography variant="body2">{dateInfo.date}</Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                  <Box className="dateElementContainer">
+                    <Box>
+                      <CircleIcon color="primary" />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6"> Hora</Typography>
+                      <Typography variant="body2">{dateInfo.time}</Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                  <Box className="dateElementContainer">
+                    <Box>
+                      <CircleIcon color="primary" />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6"> Tema</Typography>
+                      <Typography variant="body2">{dateInfo.class_date.subject.name}</Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                  <Box className="dateElementContainer">
+                    <Box>
+                      <CircleIcon color="primary" />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6">
+                        Comentario del estudiante
+                      </Typography>
+                      <Typography variant="body2">
+                        {dateInfo.class_date.comments}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </CardContent>
+        <CardActions id="firstCardAction">
+          <Link href={"mailto:" + dateInfo.class_date.userId.email} color="secondary" underline="none">
+            Contactar profesor
+          </Link>
+          <Button onClick={() => handleDeleteStudentButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+        </CardActions>
+      </Card>
   
-  )
+    )
+
+
+
+
+  }
+
 }
 
 export default FirstClass

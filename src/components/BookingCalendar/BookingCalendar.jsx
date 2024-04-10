@@ -16,7 +16,7 @@ const BookingCalendar = ({dates}) => {
     const loadEvents= ()=>{
  
       
-      const newDates= dates.filter((value, index, self) => (index === self.findIndex((t) => ( t.date === value.date && t.time === value.time))))
+      const newDates= dates.filter((value, index, self) => (index === self.findIndex((t) => ( t.date === value.date && t.time === value.time))) && new Date(value.date+"T"+value.time).getTime() >  new Date().getTime())
       setEvents(newDates.map((element)=>{ return {
       id: element.id,
       title: "Hora Disponible",

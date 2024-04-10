@@ -53,6 +53,7 @@ const BookingClass = () => {
     const handleDate = async () => {
         if (booking.date != "") {
             setValue(2)
+            console.log(booking.date)
             const result = await getTeachersByDate({ "date": booking.date.date, "time": booking.date.time  })
             setTeachers(result)
         }

@@ -1,21 +1,18 @@
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DialogActions from "@mui/material/DialogActions";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import CircleIcon from "@mui/icons-material/Circle";
+import { Avatar, Card, CardContent, Typography, Box, CardActions, Button } from '@mui/material'
 
 import {
   deleteTimeTable,
   deleteClassDate,
 } from "../../services/teacherService";
 
-import avatarImg from "../../assets/images/defaultAvatar.png"
 import "./DatePopup.css";
 
 
@@ -28,7 +25,18 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
 
     const result = await deleteClassDate(dateInfo.classId)
     const result2 = await deleteTimeTable(dateInfo.timeTableid)
-    setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.timeTableid)))
+    
+    if(localStorage.getItem("role")=="teacher"){
+      setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.timeTableid)))
+
+    }else{
+     
+       setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.classId)))
+
+
+    }
+    
+    
     setOpen(false)
   };
 
@@ -57,7 +65,7 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
       <DialogContent>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} lg={4}>
-            <img id="avatarImg" src={dateInfo.studentImg ? dateInfo.studentImg : avatarImg} />
+            <Avatar id="avatarImg" src={dateInfo.studentImg} />
           </Grid>
           <Grid item xs={12} md={8} lg={8}>
             <Grid container spacing={2}>
@@ -118,10 +126,10 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Link href={"mailto:" + dateInfo.email} underline="none">
+        <Link href={"mailto:" + dateInfo.email} color="secondary" underline="none">
           Contactar estudiante
         </Link>
-        <Button onClick={()=>handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+        <Button id="cancelButton" onClick={()=>handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
       </DialogActions>
     </Dialog>
   );

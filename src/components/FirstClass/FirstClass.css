@@ -1,0 +1,26 @@
+#firstClassCardContent .MuiAvatar-root{
+
+    width:250px;
+    height: 250px;
+    display: flex;
+    
+
+}
+
+#firstClassCard{
+
+    padding: 1% 2%;
+    margin: 2% 0;
+}
+
+#firstCardAction{
+    margin-top:-4%;
+    display: flex;
+    justify-content: end;
+}
+
+#firstCardAction button{
+
+    color:white
+
+}

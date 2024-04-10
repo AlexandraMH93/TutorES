@@ -18,10 +18,12 @@
     width:20px
 }
 
+#cancelButton{ color:white}
 
 #avatarImg{
 
-    width:90%;
+    width:120px;
+    height: 120px;
     margin: auto;
-    display: block;
+    display: flex;
 }

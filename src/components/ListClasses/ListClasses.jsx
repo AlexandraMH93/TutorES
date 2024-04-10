@@ -1,38 +1,69 @@
-import { Typography, Box } from "@mui/material";
 import { getStudent, getSubject } from "../../services/teacherService";
 import { useEffect, useState } from "react";
-import "./ListClasses.css";
 import avatarImg from "../../assets/images/defaultAvatar.png"
+import { Avatar, Card, CardContent, Typography, Box, CardActions, Button } from '@mui/material'
+import "./ListClasses.css";
 
-const ListClasses = ({ classesObj }) => {
-  const [classesList, setClassesList] = useState();
+const ListClasses = ({ classesObj, setcurrentDateInfo, setOpen }) => {
 
-  const getClasses = async () => {
-    const classes =
-      classesObj.length > 0 &&
-      (await Promise.all(
-        classesObj.map(async (elem, idx) => {
-          const student = await getStudent(elem.class_date.student_id);
-          const subject = await getSubject(elem.class_date.subjectId);
-          return (
-            <Box   className="classItem">
-              <img src={student.studentImg ? student.studentImg : avatarImg} />
-              <Typography>{student.firstName}</Typography>
-              <Typography>Date:{elem.date}</Typography>
-              <Typography>subject: {subject.name}</Typography>
-            </Box>
-          );
-        })
-      ));
 
-    setClassesList(classes);
-  };
+  const handleButton = (dateObj) => {
 
-  useEffect(() => {
-    getClasses();
-  }, [classesObj]);
+    if (localStorage.getItem("role") == "student") {
+    setcurrentDateInfo({
+      student: dateObj.timetableId.teacherId.userId.firstName + " " + dateObj.timetableId.teacherId.userId.lastName,
+      date: dateObj.timetableId.date, time: dateObj.timetableId.time, subject: dateObj.subject.name, description: dateObj.comments,
+      email: dateObj.timetableId.teacherId.userId.email, studentImg: dateObj.timetableId.teacherId.profileImage, timeTableid: dateObj.timetableId.id,
+      classId: dateObj.id
+    })}
+    else{
 
-  return <>{classesList}</>;
+      setcurrentDateInfo({
+        student: dateObj.class_date.userId.firstName + " " + dateObj.class_date.userId.lastName,
+        date: dateObj.date, time: dateObj.time, subject: dateObj.class_date.subject.name, description: dateObj.class_date.comments,
+        email: dateObj.class_date.userId.email, studentImg: dateObj.class_date.userId.profileImage, timeTableid: dateObj.id,
+        classId: dateObj.class_date.id
+      })
+
+
+    }
+
+    setOpen(true)
+
+
+  }
+
+
+  return <Box id="ClassesContainer">
+    {classesObj.map((elem) => {
+       if (localStorage.getItem("role") == "student") {
+        return (
+          <Card onClick={() => { handleButton(elem) }} className="classCard" >
+            <CardContent className="classCardContainer" >
+              <Avatar src={elem.timetableId.teacherId.userId.profileImage} />
+              <Typography variant="h6"> {elem.timetableId.teacherId.userId.firstName + " " + elem.timetableId.teacherId.userId.lastName} </Typography>
+              <Typography variant="body1"> <strong>Fecha:</strong> {elem.timetableId.date + " " + elem.timetableId.time.split(":")[0] + ":" + elem.timetableId.time.split(":")[1]} </Typography>
+              <Typography variant="body1"> <strong>Asignatura:</strong> {elem.subject.name} </Typography>
+
+            </CardContent>
+
+          </Card>
+
+        )
+      } else {
+        return (
+          <Card onClick={() => { handleButton(elem) }} className="classCard" >
+            <CardContent className="classCardContainer" >
+              <Avatar src={elem.class_date.userId.profileImage} />
+              <Typography variant="h6"> {elem.class_date.userId.firstName + " " + elem.class_date.userId.lastName} </Typography>
+              <Typography variant="body1"> <strong>Fecha:</strong> {elem.date + " " + elem.time.split(":")[0] + ":" + elem.time.split(":")[1]} </Typography>
+              <Typography variant="body1"> <strong>Asignatura:</strong> {elem.class_date.subject.name} </Typography>
+            </CardContent>
+          </Card>
+        )
+      }
+
+    })}</Box>;
 };
 
 export default ListClasses;

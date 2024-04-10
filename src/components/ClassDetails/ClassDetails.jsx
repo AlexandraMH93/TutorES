@@ -15,12 +15,11 @@ import "./ClassDetails.css"
 const ClassDetails = ({ bookingDetail }) => {
 
   const navigate = useNavigate()
-  const [comment, setComment] =useState("")
+  const [comment, setComment] =useState("Sin comentarios")
   
   const handleButton= async()=>{
-
     const result= await createClassDate({timeTable_Id:bookingDetail.date.id, subject_Id:bookingDetail.subject.id, comments: comment})
-    if(result== "ClassDate created") navigate("/student/classes")
+    if(result== "ClassDate created") navigate("/student/")
 
   }
 
@@ -32,8 +31,7 @@ const ClassDetails = ({ bookingDetail }) => {
           <CardContent>
             <Grid container spacing={2}>
               <Grid item xs={12} md={4} lg={4}>
-              <Avatar alt={bookingDetail.teacher.userId.firstName} src={bookingDetail.teacher.userId.userImg}></Avatar>
-
+              <Avatar alt={bookingDetail.teacher.userId.firstName} src={bookingDetail.teacher.userId.profileImage}></Avatar>
               </Grid>
               <Grid item xs={12} md={8} lg={8} id="teacherCardInfo">
               <Typography variant="h6">{bookingDetail.teacher.userId.firstName+" "+bookingDetail.teacher.userId.lastName }</Typography>
