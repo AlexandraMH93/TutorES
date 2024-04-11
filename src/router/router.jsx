@@ -7,7 +7,7 @@ import TeacherCalendar from "../pages/TeacherCalendar/TeacherCalendar"
 import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
 import TeacherClasses from "../pages/TeacherClasses/TeacherClasses"
 import StudentClasses from "../pages/StudentClasses/StudentClasses"
-import TeacherProfile from "../pages/TeacherProfile/TeacherProfile"
+import UserProfile from "../pages/UserProfile/UserProfile"
 
 
 const router = createBrowserRouter([
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <TeacherProfile />,
+        element: <UserProfile />,
       },
     ],
   },
