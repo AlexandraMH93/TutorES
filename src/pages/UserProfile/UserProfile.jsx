@@ -63,7 +63,7 @@ const UserProfile = () => {
         <Divider sx={{ m: 2 }} />
         <Box id="avatar-box">
           <Avatar
-            sx={{ m: 2 }}
+            sx={{ m: 2, width: '50%' }}
             /* alt={subjectName} */
             src={user && user.profileImage}
           ></Avatar>
@@ -150,9 +150,7 @@ const UserProfile = () => {
                   <MenuItem value={"Male"}>Masculino</MenuItem>
                   <MenuItem value={"Undefined"}>Indefinido</MenuItem>
                   <MenuItem value={"Nonbinary"}>No binario</MenuItem>
-                
                 </TextField>
-            
               </Grid>
 
               <Grid item xs={3}>
@@ -221,6 +219,8 @@ const UserProfile = () => {
             <>
               <Grid item xs={3}>
                 <TextField
+                  multiline
+                  maxRows={4}
                   type="text"
                   label="Descripción"
                   variant="outlined"
