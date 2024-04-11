@@ -1,10 +1,20 @@
 .subject {
     background-color: rgba(243, 250, 249, 0.279);
     color: black;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.subject:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px #284845;
+}
+
+ .avatar-container .MuiAvatar-root {
+    width: 100px;
+    height: 100px;
 }

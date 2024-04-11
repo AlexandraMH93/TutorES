@@ -1,39 +1,14 @@
-.subject {
-    background-color: rgba(243, 250, 249, 0.279);
-    color: black;
-    width: 150px;
-    height: 150px;
-    border-radius: 5px; 
- 
-}
-
-#subjects {
+#subjects-page {
     color: black;
     text-align: center;
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    height: 80vh;
     align-items: center;
-    gap: 10px;
-
+   
+    width: 80vw;
+    margin-left: 12vw;
+    margin-top: 15vh;
 }
 
-#title {
-    width: 100%;
-}
-
-.subject {
-    background-color: rgba(243, 250, 249, 0.279);
-    color: black;
-    width: 150px;
-    height: 150px;
-    /*  border-radius: 5px; */
-}
-
-.subject:hover {
-    scale: 1.05;
-    box-shadow: 0 0 10px #284845;
-}

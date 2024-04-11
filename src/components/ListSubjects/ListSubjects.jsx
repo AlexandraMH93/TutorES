@@ -14,13 +14,15 @@ export const ListSubjects = ({ subjectsObj, onDelete }) => {
     <Box id="subjectsCard-container">
       {subjectsObj &&
         subjectsObj.map((element, idx) => {
-          return localStorage.getItem("role")=="teacher" ?  <CardTeacherSubject       key={idx}    subjectName={element.name}    subjectImgUrl={element.url}     subjectId={element.id}  onDelete={(id) => onDelete(id)}
+          return localStorage.getItem("role")=="teacher" ?  <CardTeacherSubject       key={idx}  subjectImgUrl={element.subjectImage}  subjectName={element.name}          subjectId={element.id}  onDelete={(id) => onDelete(id)}
             /> : <CardStudentSubject subject={element}/>  
 
         }
           
         
       )}
+ 
+
     </Box>
   )
 }

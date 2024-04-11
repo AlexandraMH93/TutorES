@@ -8,30 +8,32 @@ import TeacherSubjects from "../pages/TeacherSubjects/TeacherSubjects"
  import Classes from "../pages/Classes/Classes"
 import BookingClass from "../pages/BookingClass/BookingClass"
 
+import UserProfile from "../pages/UserProfile/UserProfile"
+
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <AuthLayout />,
-        children: [
-            {
-                path: '',
-                element: <Login />
-            },
-            {
-                path: '/signup',
-                element: <SignUp />
-            }
-        ]
-    },
-    {
-        path: '/teacher',
-        element: <MainLayout />,
-        children: [
-            {
-                path: '',
-                element: <TeacherCalendar />
-            },
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: "/teacher",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "",
+        element: <TeacherCalendar />,
+      },
 
             {
                 path: 'subjects',
@@ -40,29 +42,34 @@ const router = createBrowserRouter([
             {
                 path: 'classes',
                 element: <Classes />
-            }
+            },
+      {
+        path: "profile",
+        element: <UserProfile />,
+      }
 
-        ]
+        ] 
 
     },
     {
         path: '/student',
         element: <MainLayout />,
-
-        children: [
-            {
-                path: '',
-                element: <Classes/>
-            },
-            {
-                path: 'booking',
-                element: <BookingClass/>
-            },
-            
-            
-        ]
-       
-    }
+        children:[
+      {
+        path: "booking",
+        element: <BookingClass />,
+      },
+      {
+        path: "",
+        element: <Classes />,
+      },
+      {
+        path: "profile",
+        element: <UserProfile />,
+      },
+    ],
+  },
+  
 
 ])
 
