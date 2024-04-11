@@ -10,7 +10,7 @@ import {
   Icon,
   OutlinedInput,
   FilledInput,
-  Box,
+  Box, Grid
 } from "@mui/material"
 import { useState } from "react"
 import { signUp } from "../../services/authService"
@@ -48,35 +48,47 @@ const SignUp = () => {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [location, setLocation] = useState("")
-  const [password, setPassword] = useState("false")
+  const [password, setPassword] = useState(false)
   const [description, setDescription] = useState("")
+  const [price, setPrice]  = useState("")
+  const [teacherLocation, setTeacherLocation]= useState("")
+  const [isPassVisible, setIsPassVisible]  = useState(false)
+ 
 
   const [role, setRole] = useState("")
   const navigate = useNavigate()
 
   const handleSignup = async () => {
-    const res = await signUp({
-      firstname,
-      lastname,
-      secondLastname,
-      setFirstname,
-      birthDate,
-      gender,
-      email,
-      phone,
-      location,
-      role,
-      password,
-      description,
-    })
+
+    const userData={
+      "userInfo":{
+      "firstName":firstname,
+      "lastName": lastname,
+      "secondLastName":secondLastname,
+      "birthDate":birthDate.$y+"-"+birthDate.$M+"-"+birthDate.$D,
+      "gender":gender,
+      "phone":phone,
+      "location":"España",
+      "role":role,
+      "email":email,
+      "password":password
+      },
+      "teacherInfo":{
+      "description":description,
+      "location":teacherLocation,
+      "price":price
+        
+      }
+  }
+    const res = await signUp(userData)
     localStorage.setItem("token", res.token)
     localStorage.setItem("role", res.role)
-    navigate("")
+    navigate("/")
   }
 
   return (
     <div className="main">
-      <Card sx={{ width: "25vw" }}>
+      <Card sx={{ width: "30vw" }}>
         <CardHeader title="Registrarse">
           <Typography variant="h3"> Registrarse </Typography>
         </CardHeader>
@@ -84,248 +96,252 @@ const SignUp = () => {
         <CardContent
           sx={{ display: "flex", flexDirection: "column", gap: "1em" }}
         >
-          <FormControl variant="filled" fullWidth>
-            <TextField
-              type="text"
-              variant="filled"
-              label="Nombre"
-              InputProps={{
-                startAdornment: (
+          <Grid container spacing={3}>
+
+
+            <Grid item xs={12} md={6} lg={6} >
+
+              <TextField
+                type="text"
+                variant="outlined"
+                label="Nombre"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <PersonIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setFirstname(e.target.value)}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+              <TextField
+                type="text"
+                variant="outlined"
+                label="1º Apellido"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <CreateIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setLastname(e.target.value)}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+
+              <TextField
+                type="text"
+                variant="outlined"
+                label="2º Apellido"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <CreateIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setSecondLastname(e.target.value)}
+              ></TextField>
+            </Grid>
+
+            <Grid item xs={12} md={6} lg={6} >
+
+              <TextField
+                type="email"
+                variant="outlined"
+                label="Email"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <EmailIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setEmail(e.target.value)}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+
+              <TextField type={isPassVisible ? 'text' : 'password'}
+                 variant="outlined"
+                label="Contraseña"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <LockIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Icon onClick={() => {setIsPassVisible((oldState) => !oldState)}}>
+                        <VisibilityOffIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setPassword(e.target.value)}
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+
+
+              <TextField
+                type="text"
+                variant="outlined"
+                label="Telefono"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        <PhoneIcon />
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={(e) => setPhone(e.target.value)}
+              >
+              </TextField>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+              <FormControl>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={["DatePicker"]}>
+                  <DatePicker
+                    onChange={(e) => setbirthDate(e)}
+                    label="Fecha de nacimiento"
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6} >
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel id="gender">Género</InputLabel>
+              <Select 
+                labelId="gender"
+                id="gender-select"
+                value={gender}
+                label="Gender"
+
+                startAdornment={
                   <InputAdornment position="start">
                     <Icon>
-                      <PersonIcon />
+                      <TransgenderIcon />
                     </Icon>
                   </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setFirstname(e.target.value)}
-            ></TextField>
+                }
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <MenuItem value={"Female"}>Femenino</MenuItem>
+                <MenuItem value={"Male"}>Masculino</MenuItem>
+                <MenuItem value={"Undefined"}>Indefinido</MenuItem>
+                <MenuItem value={"Nonbinary"}>No binario</MenuItem>
+              </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={12} lg={12} >
+              <FormControl   sx={{ width: "100%" }}>
+              <InputLabel id="role">Rol</InputLabel>
+              <Select
+                sx={{ width: "100%" }}
+                labelId="role"
+                id="role-select"
+                value={role}
+                label="Role"
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <MenuItem value={"teacher"}>Profesor</MenuItem>
+                <MenuItem value={"student"}>Estudiante</MenuItem>
+              </Select>
+              </FormControl>
+            </Grid>
 
-            <TextField
-              type="text"
-              variant="filled"
-              label="1º Apellido"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <CreateIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setLastname(e.target.value)}
-            ></TextField>
-
-            <TextField
-              type="text"
-              variant="filled"
-              label="2º Apellido"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <CreateIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setSecondLastname(e.target.value)}
-            ></TextField>
-
-            {/*   <form>
-                    <label htmlFor="birthdate">Fecha de nacimiento:</label>
-                    <input
-                      type="date"
-                      id="birthdate"
-                      name="birthdate"
-                      value={birthDate}
-                      onChange={(e) => setbirthDate(e.target.value)}
-                    />
-                  </form> */}
-
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="birthDate"
-                        label="Fecha de nacimiento"
-                        value={birthDate}
-                        onChange={(e)=> setbirthDate(e.target.value)}
-                        KeyboardButtonProps={{
-                          'aria-label': 'change date',
-                        }}
-                      />
-
-                  </MuiPickersUtilsProvider> */}
-
-            <TextField
-              type="email"
-              variant="filled"
-              label="Email"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <EmailIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setEmail(e.target.value)}
-            ></TextField>
-            <TextField
-              type="password"
-              variant="filled"
-              label="Contraseña"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <LockIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Icon>
-                      <VisibilityOffIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setPassword(e.target.value)}
-            ></TextField>
-
-            <TextField
-              type="text"
-              variant="filled"
-              label="Telefono"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Icon>
-                      <PhoneIcon />
-                    </Icon>
-                  </InputAdornment>
-                ),
-              }}
-              onChange={(e) => setPhone(e.target.value)}
-            ></TextField>
-          </FormControl>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker"]}>
-              <DatePicker
-                onChange={(e) => setbirthDate(e.$d)}
-                label="Basic date picker"
-              />
-            </DemoContainer>
-          </LocalizationProvider>
-          <FormControl>
-            <InputLabel id="gender">Género</InputLabel>
-            <Select
-              labelId="gender"
-              id="gender-select"
-              value={gender}
-              label="Gender"
-              /* input={<FilledInput label='Género' />} */
-
-              startAdornment={
-                <InputAdornment position="start">
-                  <Icon>
-                    <TransgenderIcon />
-                  </Icon>
-                </InputAdornment>
-              }
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <MenuItem value={"Female"}>Femenino</MenuItem>
-              <MenuItem value={"Male"}>Masculino</MenuItem>
-              <MenuItem value={"Undefined"}>Indefinido</MenuItem>
-              <MenuItem value={"Nonbinary"}>No binario</MenuItem>
-            </Select>
-          </FormControl>
-
-          <FormControl>
-            <InputLabel id="role">Rol</InputLabel>
-            <Select
-              margin="dense"
-              labelId="role"
-              id="role-select"
-              value={role}
-              label="Role"
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <MenuItem value={"teacher"}>Profesor</MenuItem>
-              <MenuItem value={"student"}>Estudiante</MenuItem>
-            </Select>
             {role == "teacher" && (
-              <>
-                <FormControl margin="dense">
-                  <InputLabel  id="role">Plataforma</InputLabel>
-                  <Select
-                    labelId="location"
-                    id="location-select"
-                    value={location}
-                    label="Plataforma"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Icon>
-                            <LocationOnIcon />
-                          </Icon>
-                        </InputAdornment>
-                      ),
-                    }}
-                    onChange={(e) => setLocation(e.target.value)}
-                  >
-                    <MenuItem value={"online"}>Online</MenuItem>
-                    <MenuItem value={"inPerson"}>Presencial</MenuItem>
-                  </Select>
-                </FormControl>
+            <>
+             <Grid item xs={12} md={6} lg={6} >
+              <FormControl  sx={{ width: "100%" }}>
+                <InputLabel id="role">Plataforma</InputLabel>
+                <Select
+                  labelId="location"
+                  id="location-select"
+                  value={teacherLocation}
+                  label="Plataforma"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Icon>
+                          <LocationOnIcon />
+                        </Icon>
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setTeacherLocation(e.target.value)}
+                >
+                  <MenuItem value={"online"}>Online</MenuItem>
+                  <MenuItem value={"inPerson"}>Presencial</MenuItem>
+                </Select>
+              </FormControl>
+              </Grid>
+              <Grid item xs={12} md={6} lg={6} >
+              <FormControl>
+                <TextField
+                  onChangeCapture={(e)=>setPrice(e.target.value)}
+                  type="number"
+                  variant="outlined"
+                  label="Precio"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Icon>
+                          <EuroIcon />
+                        </Icon>
+                      </InputAdornment>
+                    ),
+                  }}
+                 ></TextField>
+              </FormControl>
+              </Grid>
+              <Grid item xs={12} md={12} lg={12} >
 
-                <FormControl>
-                  <TextField
-                    margin="dense"
-                    type="text"
-                    variant="filled"
-                    label="Precio"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Icon>
-                            <EuroIcon />
-                          </Icon>
-                        </InputAdornment>
-                      ),
-                    }}
-                    onChange={(e) => setFirstname(e.target.value)}
-                  ></TextField>
-                </FormControl>
+              <FormControl  sx={{ width: "100%" }} > 
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  label="Descripción"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Icon>
+                          <DescriptionIcon />
+                        </Icon>
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></TextField>
+              </FormControl>
+              </Grid >
 
-                <FormControl>
-                  <TextField
-                    margin="dense"
-                    type="text"
-                    variant="filled"
-                    label="Descripción"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Icon>
-                            <DescriptionIcon />
-                          </Icon>
-                        </InputAdornment>
-                      ),
-                    }}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></TextField>
-                </FormControl>
-              </>
-            )}
-          </FormControl>
+            </>
+          )}
+
+          </Grid>
+
+          
+
         </CardContent>
 
         <CardActions sx={{ display: "flex", justifyContent: "end" }}>

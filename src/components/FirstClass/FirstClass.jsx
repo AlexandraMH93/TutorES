@@ -39,10 +39,11 @@ const FirstClass = ({ dateInfo, setClassDates, setFirstClass, classDate }) => {
       const result2 = await deleteTimeTable(dateInfo.id)
       const newClasses = classDate.filter((elem) => elem.id !== parseInt(dateInfo.id))
       setConfirm(false)
+      setButtonText("Eliminar Clase")
       setClassDates(newClasses)
       setFirstClass(newClasses[0])
     } else {
-
+      setButtonText("Confirmar")
       setConfirm(true)
     }
 

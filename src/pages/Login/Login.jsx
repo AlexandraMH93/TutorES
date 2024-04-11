@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField, Typography, Divider } from "@mui/material"
+import {Alert, Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField, Typography, Divider } from "@mui/material"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { login } from "../../services/authService"
@@ -8,13 +8,19 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isPassVisible, setIsPassVisible]  = useState(false)
+    const [alert, setAlert]  = useState(false)
 
     const navigate = useNavigate()
     const handleLogin = async () => {
         const res = await login({email, password})
+        console.log(res.token)
+        if(res){
         localStorage.setItem('token', res.token)
         localStorage.setItem('role', res.role)
         res.role == 'student' ? navigate('/student') : navigate('/teacher')
+        }else{
+            setAlert(true)
+        }
     }
 
     return (
@@ -60,8 +66,11 @@ const Login = () => {
 
                 <CardActions sx={{display: 'flex', flexDirection: 'column',justifyContent: 'center'}}>
                     <Button variant="outlined" color="primary" onClick={() => {handleLogin()}} fullWidth>Login</Button>
-                    <Typography>¿No tienes cuenta? <Link to="/signup"><Button color="primary" > Registrate</Button></Link></Typography>
                     
+                    <Typography>¿No tienes cuenta? <Link to="/signup"><Button color="primary" > Registrate</Button></Link></Typography>
+                    {alert && <Alert id="alert" severity="warning">
+                        El email o la contraseña no es correcto
+                    </Alert>}
                 </CardActions>
             </Card>
         </div>
