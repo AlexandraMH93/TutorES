@@ -34,8 +34,8 @@ export const getStudentClassDates = async (classObj) => {
         }                                                   
     }) 
      
-
-    return data
+    console.log(data)
+    return data.filter((elem)=> elem.timetableId)
 }
 
 export const createClassDate = async (classObj) => {

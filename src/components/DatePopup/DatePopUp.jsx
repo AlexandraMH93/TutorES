@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import CircleIcon from "@mui/icons-material/Circle";
-import { Avatar, Card, CardContent, Typography, Box, CardActions, Button } from '@mui/material'
+import { Alert, Avatar, Card, CardContent, Typography, Box, CardActions, Button } from '@mui/material'
 
 import {
   deleteTimeTable,
@@ -14,30 +14,39 @@ import {
 } from "../../services/teacherService";
 
 import "./DatePopup.css";
+import { useState } from "react";
 
 
 const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
+
+  const [confirm, setConfirm] = useState(false)
+  const [buttonText, setButtonText]= useState("Eliminar Clase")
+
+
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleDeleteButton = async() => {
+ 
 
+    if(confirm){
     const result = await deleteClassDate(dateInfo.classId)
     const result2 = await deleteTimeTable(dateInfo.timeTableid)
-    
     if(localStorage.getItem("role")=="teacher"){
       setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.timeTableid)))
 
     }else{
-     
        setTimeTable((prev) => prev.filter((elem) => elem.id !== parseInt(dateInfo.classId)))
-
-
     }
-    
-    
+    setButtonText("Eliminar Clase")
+    setConfirm(false)
     setOpen(false)
+  }else{
+
+    setButtonText("Confirmar")
+    setConfirm(true)
+  }
   };
 
   return (
@@ -52,7 +61,7 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
         }
       }}>
       <IconButton
-        aria-label="close"
+        aria-lasetButtonTextbel="close"
         onClick={handleClose}
         sx={{
           position: "absolute",
@@ -152,13 +161,19 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
             </Grid>
           </Grid>
         </Grid>
+        
       </DialogContent>
       <DialogActions>
         <Link href={"mailto:" + dateInfo.email} color="secondary" underline="none">
           Contactar {localStorage.getItem("role")=="teacher" ? "estudiante" : "profesor"}
         </Link>
-        <Button id="cancelButton" onClick={()=>handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
+        
+        <Button id="cancelButton" onClick={()=>handleDeleteButton()} variant="contained" color="warning"> {buttonText} </Button>
+       
       </DialogActions>
+      {confirm && <Alert id="alert" severity="warning">
+            ¿Está seguro de que quiere eliminar la clase?
+          </Alert>}
     </Dialog>
   );
 };

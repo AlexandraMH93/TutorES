@@ -21,7 +21,8 @@ const Classes = () => {
     let sortResult
     if(localStorage.getItem("role")=="student"){
      result= await getStudentClassDates()
-     sortResult= result.sort((a,b)=>{ return new Date(a.timetableId.date+"T"+a.timetableId.time).getTime() - new Date(b.timetableId.date+"T"+b.timetableId.time).getTime()} )
+     console.log(result)
+     sortResult= result.sort((a,b)=>{ if(a.timetableId &&  b.timetableId) return new Date(a.timetableId.date+"T"+a.timetableId.time).getTime() - new Date(b.timetableId.date+"T"+b.timetableId.time).getTime()} )
 
     }else{
       result= await getTimeTable()
