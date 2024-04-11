@@ -215,7 +215,7 @@ const SignUp = () => {
               </TextField>
             </Grid>
             <Grid item xs={12} md={6} lg={6} >
-              {/* <FormControl> */}
+               <FormControl> 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
@@ -224,12 +224,12 @@ const SignUp = () => {
                   />
                 </DemoContainer>
               </LocalizationProvider>
-              {/* </FormControl> */}
+               </FormControl> 
             </Grid>
 
             <Grid item xs={12} md={6} lg={6} >
-            {/* <FormControl sx={{ width: "100%" }}> */}
-              <InputLabel id="gender">Género</InputLabel>
+             <FormControl sx={{ width: "100%" }}> 
+              <InputLabel  id="gender">Género</InputLabel>
               <Select 
                 labelId="gender"
                 id="gender-select"
@@ -250,7 +250,7 @@ const SignUp = () => {
                 <MenuItem value={"Undefined"}>Indefinido</MenuItem>
                 <MenuItem value={"Nonbinary"}>No binario</MenuItem>
               </Select>
-              {/* </FormControl> */}
+               </FormControl> 
             </Grid>
             <Grid item xs={12} md={12} lg={12} >
               <FormControl   sx={{ width: "100%" }}>
