@@ -26,12 +26,13 @@ const Class = () => {
         setclassDate(res.filter((elem)=> elem.class_date!=null))
         const firsC= res.filter((elem)=> elem.class_date!=null)[0]
         setfirstClass(firsC);
-        
+         
         const newStudent = await getStudent(firsC.class_date.student_id);
         const newSubject = await getSubject(firsC.class_date.subjectId);
         setclassInfo(firsC.class_date)
         setStudent(newStudent)
         setSubject(newSubject)
+
     }
  
     useEffect(() => {handleClassDate()}, [])
@@ -40,13 +41,14 @@ const Class = () => {
     <div id="mainContainer">
        <Card>
         <CardContent>
-            <Typography variant="h5"  >
+            <Typography variant="h5">
               Your next Class
             </Typography>
             <div id="box1">
+
             {   firstClass && <FirstClass dateInfo={firstClass} student={student} subject={subject} classInfo={classInfo} />}
             </div>
-            <Typography variant="h5" >
+            <Typography variant="h5">
               Your other Classes
             </Typography>
             <input type="search" /> 
