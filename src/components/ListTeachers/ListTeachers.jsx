@@ -12,13 +12,13 @@ const ListTeachers = ({teachers}) => {
   const {booking}= useContext(BookingContext)
    
   return (
-    <Box>
-    <Typography variant="h5"> Escoge un profesor</Typography>
-    <Box id="teachersContainer">
-    {teachers.map((elem, idx)=>{
-         return <TeacherCard teacherInfo={elem.teacherId} />
-    })}
-    </Box>
+    <Box sx={{ width: "100%"}}>
+      <Typography variant="h5"> Escoge un profesor</Typography>
+      <Box sx={{ width: "100%" }} id="teachersContainer">
+        {teachers.map((elem, idx) => {
+          return <TeacherCard teacherInfo={elem.teacherId} />
+        })}
+      </Box>
     </Box>
   )
 }

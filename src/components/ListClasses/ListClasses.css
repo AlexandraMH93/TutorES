@@ -21,6 +21,10 @@
 
 }
 
+.classCard:hover {
+        scale: 1.05;
+            box-shadow: 0 0 10px #284845;
+}
 .classCard .MuiAvatar-root{
 
     margin: auto;

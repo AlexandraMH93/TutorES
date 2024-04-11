@@ -25,6 +25,11 @@
 
 }
 
+.bookingSubject:hover {
+    scale: 1.05;
+        box-shadow: 0 0 10px #284845;
+}
+
 .subjectContainer .MuiAvatar-root{
 
     width:100px;

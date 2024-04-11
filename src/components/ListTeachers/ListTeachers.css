@@ -1,7 +1,7 @@
 #teachersContainer {
     display: flex;
     padding:2%;
-    justify-content: center; 
+    justify-content: start; 
     flex-wrap: wrap;
     width: 100%;
     gap: 20px;

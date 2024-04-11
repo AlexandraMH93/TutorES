@@ -1,7 +1,7 @@
 #firstClassCardContent .MuiAvatar-root{
 
-    width:250px;
-    height: 250px;
+    width:200px;
+    height: 200px;
     display: flex;
     
 
@@ -23,4 +23,8 @@
 
     color:white
 
+}
+#firstClassCard:hover {
+    scale: 1.02;
+        box-shadow: 0 0 10px #284845;
 }

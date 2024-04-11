@@ -11,7 +11,10 @@
     cursor: pointer;
 }
 
-
+.teacherCard:hover {
+    scale: 1.05;
+    box-shadow: 0 0 10px #284845;
+}
 
 .teacherContainer{
 
@@ -31,3 +34,4 @@
     height: 100px;
 
 }
+

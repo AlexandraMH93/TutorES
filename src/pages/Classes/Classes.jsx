@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from "@mui/material"
+import { Card, CardContent, Typography, Box, Divider } from "@mui/material"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getTimeTable } from "../../services/teacherService"
@@ -52,11 +52,35 @@ const Classes = () => {
     <Box id="mainContainer">
       <Box id="BookingContainer">
         <Typography variant="h4"> Mi siguiente clase </Typography>
-        {firstClass  ? <FirstClass dateInfo={firstClass} classDate={classDate} setClassDates={setClassDate} setFirstClass={setFirstClass}/> :  <Typography variant="h5"> Aún no tienes ninguna clase </Typography> }
-        <Typography variant="h4" > Mis otras Clases </Typography>
-        { classDate && <ListClasses classesObj={classDate} setcurrentDateInfo={setcurrentDateInfo} setOpen={setOpen} />}
+
+        {firstClass ? (
+          <FirstClass
+            dateInfo={firstClass}
+            classDate={classDate}
+            setClassDates={setClassDate}
+            setFirstClass={setFirstClass}
+          />
+        ) : (
+          <Typography variant="h5"> Aún no tienes ninguna clase </Typography>
+        )}
+        <Divider sx={{ m: 2 }} />
+        <Typography variant="h4"> Mis otras Clases </Typography>
+        {classDate && (
+          <ListClasses
+            classesObj={classDate}
+            setcurrentDateInfo={setcurrentDateInfo}
+            setOpen={setOpen}
+          />
+        )}
       </Box>
-      {currentDateInfo && <DatePopUp open={open} setOpen={setOpen} dateInfo={currentDateInfo} setTimeTable={setClassDate}  />}
+      {currentDateInfo && (
+        <DatePopUp
+          open={open}
+          setOpen={setOpen}
+          dateInfo={currentDateInfo}
+          setTimeTable={setClassDate}
+        />
+      )}
     </Box>
   )
 }

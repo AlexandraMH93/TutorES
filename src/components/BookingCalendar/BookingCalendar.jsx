@@ -62,7 +62,7 @@ const BookingCalendar = ({dates}) => {
 
   return (
      
-    <Box id="bookingCalendarContainer">
+    <Box sx={{width: '100%'}} id="bookingCalendarContainer">
       <Typography variant="h5"> Escoge una fecha</Typography>
         <FullCalendar
           headerToolbar={{start:'', center:'title', end:'today prev,next' }}

@@ -47,7 +47,7 @@ const ClassDetails = ({ bookingDetail }) => {
       <Grid item xs={12} md={4} lg={4}>
         <Typography variant="h5">Información de la reserva</Typography>
         <Card className="teacherBookingCard" >
-          <CardContent>
+          <CardContent >
             <Grid container spacing={2}>
               <Grid item xs={12} md={12} lg={12}>
               <Typography variant="h6">Asignatura</Typography>
