@@ -38,7 +38,7 @@ const Class = () => {
     useEffect(() => {handleClassDate()}, [])
 
    return (
-    <div id="mainContainer">
+    <div className="mainContainer">
        <Card>
         <CardContent>
             <Typography variant="h5">

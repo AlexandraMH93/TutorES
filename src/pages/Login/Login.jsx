@@ -26,7 +26,6 @@ const Login = () => {
 
     return (
       <>
-        <div className="wrapper"></div>
         <div className="auth">
             <Card >
                 <CardHeader title='Iniciar sesión' sx={{display: 'flex', textAlign: 'center'}} ></CardHeader>
@@ -85,13 +84,19 @@ const Login = () => {
 
             <Divider />
 
-                <CardActions sx={{display: 'flex', flexDirection: 'column',justifyContent: 'center'}}>
-                    <Button variant="outlined" color="primary" onClick={() => {handleLogin()}} fullWidth>Login</Button>
+                <CardActions sx={{display: 'flex', padding: '16px', flexDirection: 'column',justifyContent: 'center', gap: '20px'}}>
+                    <Button variant="contained" color="secondary" onClick={() => {handleLogin()}} fullWidth>Login</Button>
                     
-                    <Typography>¿No tienes cuenta? <Link to="/signup"><Button color="primary" > Registrate</Button></Link></Typography>
+                    <Typography >¿No tienes cuenta? 
+                      <Link to="/signup">
+                        <Button  color="primary" > Registrate</Button>
+                      </Link>
+                    </Typography>
+
                     {alert && <Alert id="alert" severity="warning">
                         El email o la contraseña no es correcto
                     </Alert>}
+
                 </CardActions>
             </Card>
         </div>

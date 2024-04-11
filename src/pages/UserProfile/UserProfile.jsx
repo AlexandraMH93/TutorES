@@ -16,8 +16,6 @@ import { getUserInfo } from '../../services/userService'
 import Grid from "@mui/material/Grid"
 import './UserProfile.css'
 
-/* import { NameContext } from '../../context/userContext' */
-
 const UserProfile = () => {
    const [user, setUser] = useState()
    const [teacherInfo, setTeacherInfo] = useState()

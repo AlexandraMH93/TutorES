@@ -87,8 +87,8 @@ const SignUp = () => {
   }
 
   return (
-    <div className="main">
-      <Card sx={{ width: "30vw" }}>
+    <div id='signup-container'>
+      <Card sx={{ width: "40vw" }}>
         <CardHeader title="Registrarse">
           <Typography variant="h3"> Registrarse </Typography>
         </CardHeader>
@@ -102,6 +102,7 @@ const SignUp = () => {
             <Grid item xs={12} md={6} lg={6} >
 
               <TextField
+              required
                 type="text"
                 variant="outlined"
                 label="Nombre"
@@ -119,6 +120,7 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12} md={6} lg={6} >
               <TextField
+              required
                 type="text"
                 variant="outlined"
                 label="1º Apellido"
@@ -137,6 +139,7 @@ const SignUp = () => {
             <Grid item xs={12} md={6} lg={6} >
 
               <TextField
+              required
                 type="text"
                 variant="outlined"
                 label="2º Apellido"
@@ -154,8 +157,8 @@ const SignUp = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6} >
-
               <TextField
+              required
                 type="email"
                 variant="outlined"
                 label="Email"
@@ -171,10 +174,11 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
               ></TextField>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} >
 
-              <TextField type={isPassVisible ? 'text' : 'password'}
+            <Grid item xs={12} md={6} lg={6} >
+              <TextField type= 'text'
                  variant="outlined"
+                 required
                 label="Contraseña"
                 InputProps={{
                   startAdornment: (
@@ -184,13 +188,7 @@ const SignUp = () => {
                       </Icon>
                     </InputAdornment>
                   ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Icon onClick={() => {setIsPassVisible((oldState) => !oldState)}}>
-                        <VisibilityOffIcon />
-                      </Icon>
-                    </InputAdornment>
-                  ),
+                 
                 }}
                 onChange={(e) => setPassword(e.target.value)}
               ></TextField>
@@ -199,6 +197,7 @@ const SignUp = () => {
 
 
               <TextField
+              required
                 type="text"
                 variant="outlined"
                 label="Telefono"
@@ -216,7 +215,7 @@ const SignUp = () => {
               </TextField>
             </Grid>
             <Grid item xs={12} md={6} lg={6} >
-              <FormControl>
+              {/* <FormControl> */}
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["DatePicker"]}>
                   <DatePicker
@@ -225,10 +224,11 @@ const SignUp = () => {
                   />
                 </DemoContainer>
               </LocalizationProvider>
-              </FormControl>
+              {/* </FormControl> */}
             </Grid>
+
             <Grid item xs={12} md={6} lg={6} >
-            <FormControl sx={{ width: "100%" }}>
+            {/* <FormControl sx={{ width: "100%" }}> */}
               <InputLabel id="gender">Género</InputLabel>
               <Select 
                 labelId="gender"
@@ -250,12 +250,13 @@ const SignUp = () => {
                 <MenuItem value={"Undefined"}>Indefinido</MenuItem>
                 <MenuItem value={"Nonbinary"}>No binario</MenuItem>
               </Select>
-              </FormControl>
+              {/* </FormControl> */}
             </Grid>
             <Grid item xs={12} md={12} lg={12} >
               <FormControl   sx={{ width: "100%" }}>
               <InputLabel id="role">Rol</InputLabel>
               <Select
+              required
                 sx={{ width: "100%" }}
                 labelId="role"
                 id="role-select"
@@ -273,8 +274,9 @@ const SignUp = () => {
             <>
              <Grid item xs={12} md={6} lg={6} >
               <FormControl  sx={{ width: "100%" }}>
-                <InputLabel id="role">Plataforma</InputLabel>
+                <InputLabel required id="role">Plataforma</InputLabel>
                 <Select
+                
                   labelId="location"
                   id="location-select"
                   value={teacherLocation}
@@ -298,6 +300,7 @@ const SignUp = () => {
               <Grid item xs={12} md={6} lg={6} >
               <FormControl>
                 <TextField
+                required
                   onChangeCapture={(e)=>setPrice(e.target.value)}
                   type="number"
                   variant="outlined"
@@ -318,6 +321,9 @@ const SignUp = () => {
 
               <FormControl  sx={{ width: "100%" }} > 
                 <TextField
+                required
+                 multiline
+                 maxRows={4}
                   type="text"
                   variant="outlined"
                   label="Descripción"
@@ -346,11 +352,11 @@ const SignUp = () => {
 
         <CardActions sx={{ display: "flex", justifyContent: "end" }}>
           <Link to={"/"}>
-            <Button>Cancelar</Button>
+            <Button variant="outlined">Cancelar</Button>
           </Link>
 
           <Link to={"/signup"}>
-            <Button variant="contained" onClick={() => handleSignup()}>
+            <Button variant="contained" color='secondary' onClick={() => handleSignup()}>
               Registrarse
             </Button>
           </Link>

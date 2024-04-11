@@ -49,9 +49,9 @@ const Classes = () => {
 
 
   return (
-    <Box id="mainContainer">
+    <Box className="mainContainer">
       <Box id="BookingContainer">
-        <Typography variant="h4"> Mi siguiente clase </Typography>
+        <Typography sx={{m:2}} variant="h4"> Mi siguiente clase </Typography>
 
         {firstClass ? (
           <FirstClass
@@ -61,10 +61,11 @@ const Classes = () => {
             setFirstClass={setFirstClass}
           />
         ) : (
-          <Typography variant="h5"> Aún no tienes ninguna clase </Typography>
+          <Typography sx={{ m: 2 }}  variant="h6"> Aún no tienes ninguna clase </Typography>
         )}
+
         <Divider sx={{ m: 2 }} />
-        <Typography variant="h4"> Mis otras Clases </Typography>
+        <Typography sx={{ m: 2 }} variant="h4"> Mis otras Clases </Typography>
         {classDate && (
           <ListClasses
             classesObj={classDate}

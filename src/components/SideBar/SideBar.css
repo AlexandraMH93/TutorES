@@ -15,7 +15,7 @@
 
 #sidebarLinks{
     margin-top: 13vh;
-    width:80%;
+    
 }
 
 .sideBarOption a{
@@ -29,7 +29,7 @@
 }
 
 .sideBarOption svg{
-    font-size:40px
+    font-size:30px;
 } 
 
 
@@ -44,3 +44,4 @@
     filter: brightness(1.4);
    /*  box-shadow: 0 0 10px #284845; */
 }
+
