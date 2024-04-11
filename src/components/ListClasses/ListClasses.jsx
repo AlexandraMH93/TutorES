@@ -13,8 +13,8 @@ const ListClasses = ({ classesObj, setcurrentDateInfo, setOpen }) => {
     setcurrentDateInfo({
       student: dateObj.timetableId.teacherId.userId.firstName + " " + dateObj.timetableId.teacherId.userId.lastName,
       date: dateObj.timetableId.date, time: dateObj.timetableId.time, subject: dateObj.subject.name, description: dateObj.comments,
-      email: dateObj.timetableId.teacherId.userId.email, studentImg: dateObj.timetableId.teacherId.profileImage, timeTableid: dateObj.timetableId.id,
-      classId: dateObj.id
+      email: dateObj.timetableId.teacherId.userId.email, studentImg: dateObj.timetableId.teacherId.userId.profileImage, timeTableid: dateObj.timetableId.id,
+      classId: dateObj.id, price: dateObj.timetableId.teacherId.price
     })}
     else{
 

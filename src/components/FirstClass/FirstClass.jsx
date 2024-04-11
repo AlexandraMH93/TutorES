@@ -32,7 +32,7 @@ const FirstClass = ({ dateInfo, setClassDates, setFirstClass ,classDate}) => {
     
     
   }
-  console.log(dateInfo)
+  
 
 if(localStorage.getItem("role")=="student"){
    return (
@@ -70,7 +70,7 @@ if(localStorage.getItem("role")=="student"){
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={12} lg={12}>
+              <Grid item xs={12} md={6} lg={6}>
                 <Box className="dateElementContainer">
                   <Box>
                     <CircleIcon color="primary" />
@@ -81,6 +81,17 @@ if(localStorage.getItem("role")=="student"){
                   </Box>
                 </Box>
               </Grid>
+              <Grid item xs={12} md={6} lg={6}>
+                <Box className="dateElementContainer">
+                  <Box>
+                    <CircleIcon color="primary" />
+                  </Box>
+                  <Box>
+                    <Typography variant="h6"> Precio</Typography>
+                    <Typography variant="body2">{dateInfo.timetableId.teacherId.price}€</Typography>
+                  </Box>
+                </Box>
+              </Grid>
               <Grid item xs={12} md={12} lg={12}>
                 <Box className="dateElementContainer">
                   <Box>
@@ -88,7 +99,7 @@ if(localStorage.getItem("role")=="student"){
                   </Box>
                   <Box>
                     <Typography variant="h6">
-                      Comentario del estudiante
+                      Comentario 
                     </Typography>
                     <Typography variant="body2">
                       {dateInfo.comments}

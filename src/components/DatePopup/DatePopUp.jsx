@@ -95,17 +95,45 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={12} lg={12}>
-                <Box className="dateElementContainer">
-                  <Box>
-                    <CircleIcon color="primary" />
-                  </Box>
-                  <Box>
-                    <Typography variant="h6"> Tema</Typography>
-                    <Typography variant="body2">{dateInfo.subject}</Typography>
-                  </Box>
+
+              {
+              
+              
+              localStorage.getItem("role")=="teacher" ? <Grid item xs={12} md={12} lg={12}>
+              <Box className="dateElementContainer">
+                <Box>
+                  <CircleIcon color="primary" />
                 </Box>
-              </Grid>
+                <Box>
+                  <Typography variant="h6"> Tema</Typography>
+                  <Typography variant="body2">{dateInfo.subject}</Typography>
+                </Box>
+              </Box>
+            </Grid> :<> <Grid item xs={12} md={6} lg={6}>
+              <Box className="dateElementContainer">
+                <Box>
+                  <CircleIcon color="primary" />
+                </Box>
+                <Box>
+                  <Typography variant="h6"> Tema</Typography>
+                  <Typography variant="body2">{dateInfo.subject}</Typography>
+                </Box>
+              </Box>
+              </Grid> 
+              <Grid item xs={12} md={6} lg={6}>
+              <Box className="dateElementContainer">
+                <Box>
+                  <CircleIcon color="primary" />
+                </Box>
+                <Box>
+                  <Typography variant="h6"> Precio</Typography>
+                  <Typography variant="body2">{dateInfo.price}€</Typography>
+                </Box>
+              </Box>
+              </Grid> 
+              </>
+              }
+ 
               <Grid item xs={12} md={12} lg={12}>
                 <Box className="dateElementContainer">
                   <Box>
@@ -113,7 +141,7 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
                   </Box>
                   <Box>
                     <Typography variant="h6">
-                      Comentario del estudiante
+                      Comentario {localStorage.getItem("role")=="teacher" ? "del estudiante" : ""}
                     </Typography>
                     <Typography variant="body2">
                       {dateInfo.description}
@@ -127,7 +155,7 @@ const DatePopUp = ({ open, setOpen, dateInfo, setTimeTable }) => {
       </DialogContent>
       <DialogActions>
         <Link href={"mailto:" + dateInfo.email} color="secondary" underline="none">
-          Contactar estudiante
+          Contactar {localStorage.getItem("role")=="teacher" ? "estudiante" : "profesor"}
         </Link>
         <Button id="cancelButton" onClick={()=>handleDeleteButton()} variant="contained" color="warning"> Eliminar Clase </Button>
       </DialogActions>
