@@ -210,7 +210,7 @@ const FirstClass = ({ dateInfo, setClassDates, setFirstClass, classDate }) => {
         </CardContent>
         <CardActions id="firstCardAction">
           <Link href={"mailto:" + dateInfo.class_date.userId.email} color="secondary" underline="none">
-            Contactar profesor
+            Contactar alumno
           </Link>
           {confirm && <Alert severity="warning">
             ¿Está seguro de que quiere eliminar la clase?
