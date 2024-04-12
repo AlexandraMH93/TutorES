@@ -17,6 +17,7 @@ const Login = () => {
         if(res){
         localStorage.setItem('token', res.token)
         localStorage.setItem('role', res.role)
+        localStorage.setItem('image', res.image)
 
         res.role == 'student' ? navigate('/student') : navigate('/teacher')
         }else{

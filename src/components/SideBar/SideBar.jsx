@@ -136,7 +136,7 @@ const SideBar = () => {
               <Avatar
                 sx={{ m: 2, width: "50%" }}
                 /* alt={subjectName} */
-                src={user && user.profileImage}
+                /* src={user && user.profileImage} */
               ></Avatar>
             
           </Link>
