@@ -13,8 +13,9 @@ const Login = () => {
     const navigate = useNavigate()
     const handleLogin = async () => {
         const res = await login({email, password})
-        console.log(res.token)
+        
         if(res){
+          console.log(res)
         localStorage.setItem('token', res.token)
         localStorage.setItem('role', res.role)
         localStorage.setItem('image', res.image)

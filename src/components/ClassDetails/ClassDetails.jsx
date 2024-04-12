@@ -16,7 +16,7 @@ const ClassDetails = ({ bookingDetail }) => {
 
   const navigate = useNavigate()
   const [comment, setComment] =useState("Sin comentarios")
-  
+  console.log( "hola", bookingDetail )
   const handleButton= async()=>{
 
     const result= await createClassDate({

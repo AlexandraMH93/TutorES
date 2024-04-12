@@ -134,9 +134,9 @@ const SideBar = () => {
           >
             
               <Avatar
-                sx={{ m: 2, width: "50%" }}
+                sx={{ m: 2, width: "50px", height: "50px" }}
                 /* alt={subjectName} */
-                /* src={user && user.profileImage} */
+                 src={localStorage.getItem("image") && localStorage.getItem("image")} 
               ></Avatar>
             
           </Link>

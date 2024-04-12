@@ -82,11 +82,12 @@ const SignUp = () => {
     const res = await signUp(userData)
     localStorage.setItem("token", res.token)
     localStorage.setItem("role", res.role)
+    localStorage.setItem("role", res.image)
     navigate("/")
   }
 
   return (
-    <div id="signup-container">
+    <div id="signup-container"> console.log(res.token)
       <Card
         sx={{
           width: "40vw",
