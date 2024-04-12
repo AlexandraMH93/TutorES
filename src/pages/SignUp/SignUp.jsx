@@ -77,7 +77,6 @@ const SignUp = () => {
       "description":description,
       "location":teacherLocation,
       "price":price
-        
       }
   }
     const res = await signUp(userData)
@@ -101,7 +100,7 @@ const SignUp = () => {
 
             <Grid item xs={12} md={6} lg={6} >
 
-              <TextField
+              <TextField  sx={{ width: "100%" }}
               required
                 type="text"
                 variant="outlined"
@@ -120,7 +119,7 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12} md={6} lg={6} >
               <TextField
-              required
+              required  sx={{ width: "100%" }}
                 type="text"
                 variant="outlined"
                 label="1º Apellido"
@@ -139,7 +138,7 @@ const SignUp = () => {
             <Grid item xs={12} md={6} lg={6} >
 
               <TextField
-              required
+              required  sx={{ width: "100%" }}
                 type="text"
                 variant="outlined"
                 label="2º Apellido"
@@ -157,7 +156,7 @@ const SignUp = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6} >
-              <TextField
+              <TextField  sx={{ width: "100%" }}
               required
                 type="email"
                 variant="outlined"
@@ -176,7 +175,7 @@ const SignUp = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6} >
-              <TextField type= 'text'
+              <TextField type= 'text'  sx={{ width: "100%" }}
                  variant="outlined"
                  required
                 label="Contraseña"
@@ -196,7 +195,7 @@ const SignUp = () => {
             <Grid item xs={12} md={6} lg={6} >
 
 
-              <TextField
+              <TextField  sx={{ width: "100%" }}
               required
                 type="text"
                 variant="outlined"
@@ -215,10 +214,10 @@ const SignUp = () => {
               </TextField>
             </Grid>
             <Grid item xs={12} md={6} lg={6} >
-               <FormControl> 
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker
+               <FormControl  sx={{ width: "100%", marginTop:"-8px" }}> 
+              <LocalizationProvider dateAdapter={AdapterDayjs}   >
+                <DemoContainer    components={["DatePicker"]}>
+                  <DatePicker  sx={{ width: "100%" }}
                     onChange={(e) => setbirthDate(e)}
                     label="Fecha de nacimiento"
                   />
@@ -298,9 +297,9 @@ const SignUp = () => {
               </FormControl>
               </Grid>
               <Grid item xs={12} md={6} lg={6} >
-              <FormControl>
+              <FormControl  sx={{ width: "100%" }}>
                 <TextField
-                required
+                required 
                   onChangeCapture={(e)=>setPrice(e.target.value)}
                   type="number"
                   variant="outlined"

@@ -13,16 +13,13 @@ body {
   display: grid;
   align-content: center;
   justify-content: center;
-  /* z-index: 10; */
   top: 280px;
-  /* position: relative; */
   min-width: 20%;
   gap: 10;
-  width: 92vw;
-  margin-left: 8vw;
   margin-top:10vh;
 
 }
+
 
 
 @keyframes scroll {
@@ -33,7 +30,7 @@ body {
 
 
 
-.mainContainer{
+.mainContainer , #mainContainer{
   width: 92vw;
   margin-left: 8vw;
   margin-top:10vh;
@@ -43,3 +40,10 @@ body {
 }
 
 
+#BookingContainer{
+
+  width:80%;
+  margin: auto;
+  padding: 2% 0%
+
+}
