@@ -12,24 +12,32 @@ const ListClasses = ({ classesObj, setcurrentDateInfo, setOpen }) => {
     if (localStorage.getItem("role") == "student") {
     setcurrentDateInfo({
       student: dateObj.timetableId.teacherId.userId.firstName + " " + dateObj.timetableId.teacherId.userId.lastName,
-      date: dateObj.timetableId.date, time: dateObj.timetableId.time, subject: dateObj.subject.name, description: dateObj.comments,
-      email: dateObj.timetableId.teacherId.userId.email, studentImg: dateObj.timetableId.teacherId.userId.profileImage, timeTableid: dateObj.timetableId.id,
-      classId: dateObj.id, price: dateObj.timetableId.teacherId.price
+      date: dateObj.timetableId.date, 
+      time: dateObj.timetableId.time, 
+      subject: dateObj.subject.name, 
+      description: dateObj.comments,
+      email: dateObj.timetableId.teacherId.userId.email, 
+      studentImg: dateObj.timetableId.teacherId.userId.profileImage, 
+      timeTableid: dateObj.timetableId.id,
+      classId: dateObj.id, 
+      price: dateObj.timetableId.teacherId.price
     })}
+    
     else{
-
       setcurrentDateInfo({
         student: dateObj.class_date.userId.firstName + " " + dateObj.class_date.userId.lastName,
-        date: dateObj.date, time: dateObj.time, subject: dateObj.class_date.subject.name, description: dateObj.class_date.comments,
-        email: dateObj.class_date.userId.email, studentImg: dateObj.class_date.userId.profileImage, timeTableid: dateObj.id,
+        date: dateObj.date, 
+        time: dateObj.time, 
+        subject: dateObj.class_date.subject.name, 
+        description: dateObj.class_date.comments,
+        email: dateObj.class_date.userId.email, 
+        studentImg: dateObj.class_date.userId.profileImage, 
+        timeTableid: dateObj.id,
         classId: dateObj.class_date.id
       })
-
-
     }
 
     setOpen(true)
-
 
   }
 

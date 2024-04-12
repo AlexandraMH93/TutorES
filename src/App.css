@@ -9,15 +9,22 @@ body {
 }
 
 .auth {
-  height: 90%;
+  height: 100%;
+  width: 100%;
   display: grid;
   align-content: center;
   justify-content: center;
   top: 280px;
   min-width: 20%;
-  gap: 10;
   margin-top:10vh;
-
+ /*  background-color: #284845; */
+  /* background-color: #dae9d9; */
+ /*  background-color: rgb(234, 247, 246); */
+ background-image: linear-gradient(black, black), url('./assets/images/edwin-andrade-4V1dC_eoCwg-unsplash.jpg');
+ background-repeat: no-repeat;
+ background-size:cover ;
+ background-position: center;
+background-blend-mode: saturation;
 }
 
 

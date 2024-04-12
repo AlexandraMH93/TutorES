@@ -26,56 +26,26 @@ import AddIcon from "@mui/icons-material/Add"
   const [currentSubjects, setCurrentSubjects] = useState([]) //asignaturas actuales del profesor que se muestran en mis asignaturas
   const [listAddSubjects, setListAddSubjects] = useState([]) //asignaturas que se tienen que añadir al profesor
 
-  const handleTeacherSubjects = async () => {
+  const handleTeacherSubjects = async () => { 
     const res = await teacherSubjects()
-    setdataBaseTeacherSubjects(res) //las asignaturas del profesor que ya tiene en la base de datos
+    setdataBaseTeacherSubjects(res) 
   }
 
   const handleSubjects = async () => {
     const res = await getAllSubjects()
-    setSubjects(res) //todas las asignaturas de la base de datos
+    setSubjects(res)  
   }
 
   const onAddSubjects = async () => {
-    /*     const addSubj = subjects.filter((subjObj) => listAddSubjects.includes(subjObj.name) ) // addSubject es un array de objetos de las asignaturas a añadir
-
-    setCurrentSubjects([...dataBaseTeacherSubjects, ...addSubj.filter((subj) => !Object.values(dataBaseTeacherSubjects).includes(subj.name))]) //añade las asignaturas que no están en la base de datos
-
-    currentSubjects.map(async (subjObj) => await addSubject(subjObj.id)) //me añade las asignaturas en la base de datos
-
-    handleTeacherSubjects()
-    setListAddSubjects([]) */
-
-    // Obtener las nuevas asignaturas seleccionadas
-    const addSubj = subjects.filter((subjObj) =>
-      listAddSubjects.includes(subjObj.name)
-    )
-
-    // Filtrar las asignaturas duplicadas entre las asignaturas del profesor y las nuevas asignaturas
-    const uniqueSubjects = [
-      ...new Set([
-        ...dataBaseTeacherSubjects.map((subj) => subj.name),
-        ...addSubj.map((subj) => subj.name),
-      ]),
-    ]
-
-    // Filtrar las nuevas asignaturas que no están en la base de datos del profesor
+    const addSubj = subjects.filter((subjObj) => listAddSubjects.includes(subjObj.name))
+    const uniqueSubjects = [...new Set([...dataBaseTeacherSubjects.map((subj) => subj.name),...addSubj.map((subj) => subj.name)])]
     const uniqueAddSubj = addSubj.filter((subj) => !dataBaseTeacherSubjects.map((subj) => subj.name).includes(subj.name))
-
-    // Actualizar el estado de las asignaturas del profesor
     setCurrentSubjects(uniqueSubjects.map((name) => subjects.find((subj) => subj.name === name)))
-
-    // Agregar las asignaturas en la base de datos
     uniqueAddSubj.map(async (subjObj) => await addSubject(subjObj.id))
-
-    // Actualizar las asignaturas del profesor obtenidas de la base de datos
     await handleTeacherSubjects()
-
-    // Limpiar la lista de asignaturas seleccionadas
     setListAddSubjects([])
   }
 
-  //Delete subjects
   const onDelete = async (id) => {
     setCurrentSubjects((old) => old.filter((el) => id != el.id))
     await deleteTeacherSubject(id)

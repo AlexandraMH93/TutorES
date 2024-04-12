@@ -18,7 +18,13 @@ const ClassDetails = ({ bookingDetail }) => {
   const [comment, setComment] =useState("Sin comentarios")
   
   const handleButton= async()=>{
-    const result= await createClassDate({timeTable_Id:bookingDetail.date.id, subject_Id:bookingDetail.subject.id, comments: comment})
+
+    const result= await createClassDate({
+      timeTable_Id:bookingDetail.date.id, 
+      subject_Id:bookingDetail.subject.id, 
+      comments: comment
+    })
+    
     if(result== "ClassDate created") navigate("/student/")
 
   }

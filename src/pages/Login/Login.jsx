@@ -2,7 +2,7 @@ import {Alert, Button, Card, CardActions, CardContent, CardHeader, Icon, IconBut
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { login } from "../../services/authService"
-import { Email, Lock, VisibilityOff } from "@mui/icons-material"
+import { Email, Lock, VisibilityOff, Visibility } from "@mui/icons-material"
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -27,8 +27,11 @@ const Login = () => {
     return (
       <>
         <div className="auth">
-            <Card >
-                <CardHeader title='Iniciar sesión' sx={{display: 'flex', textAlign: 'center'}} ></CardHeader>
+          <Card>
+            <CardHeader
+              title="Iniciar sesión"
+              sx={{ display: "flex", textAlign: "center" }}
+            ></CardHeader>
 
             <CardContent
               sx={{
@@ -72,8 +75,7 @@ const Login = () => {
                           setIsPassVisible((oldState) => !oldState)
                         }}
                       >
-                        {/* <VisibilityIcon /> */}
-                        <VisibilityOff />
+                        {!isPassVisible ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -84,21 +86,40 @@ const Login = () => {
 
             <Divider />
 
-                <CardActions sx={{display: 'flex', padding: '16px', flexDirection: 'column',justifyContent: 'center', gap: '20px'}}>
-                    <Button variant="contained" color="secondary" onClick={() => {handleLogin()}} fullWidth>Login</Button>
-                    
-                    <Typography >¿No tienes cuenta? 
-                      <Link to="/signup">
-                        <Button  color="primary" > Registrate</Button>
-                      </Link>
-                    </Typography>
+            <CardActions
+              sx={{
+                display: "flex",
+                padding: "16px",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: "20px",
+              }}
+            >
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                  handleLogin()
+                }}
+                fullWidth
+              >
+                Login
+              </Button>
 
-                    {alert && <Alert id="alert" severity="warning">
-                        El email o la contraseña no es correcto
-                    </Alert>}
+              <Typography>
+                ¿No tienes cuenta?
+                <Link to="/signup">
+                  <Button color="primary"> Registrate</Button>
+                </Link>
+              </Typography>
 
-                </CardActions>
-            </Card>
+              {alert && (
+                <Alert id="alert" severity="warning">
+                  El email o la contraseña no es correcto
+                </Alert>
+              )}
+            </CardActions>
+          </Card>
         </div>
       </>
     )

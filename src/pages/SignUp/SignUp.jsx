@@ -86,8 +86,17 @@ const SignUp = () => {
   }
 
   return (
-    <div id='signup-container'>
-      <Card sx={{ width: "40vw" }}>
+    <div id="signup-container">
+      <Card
+        sx={{
+          width: "40vw",
+          height: "60%",
+          marginTop: "8%",
+          overflowY: "scroll",
+          scrollbarColor: "#b5b5b5 white",
+          scrollbarWidth: "thin",
+        }}
+      >
         <CardHeader title="Registrarse">
           <Typography variant="h3"> Registrarse </Typography>
         </CardHeader>
@@ -96,12 +105,10 @@ const SignUp = () => {
           sx={{ display: "flex", flexDirection: "column", gap: "1em" }}
         >
           <Grid container spacing={3}>
-
-
-            <Grid item xs={12} md={6} lg={6} >
-
-              <TextField  sx={{ width: "100%" }}
-              required
+            <Grid item xs={12} md={6} lg={6}>
+              <TextField
+                sx={{ width: "100%" }}
+                required
                 type="text"
                 variant="outlined"
                 label="Nombre"
@@ -117,9 +124,10 @@ const SignUp = () => {
                 onChange={(e) => setFirstname(e.target.value)}
               ></TextField>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} >
+            <Grid item xs={12} md={6} lg={6}>
               <TextField
-              required  sx={{ width: "100%" }}
+                required
+                sx={{ width: "100%" }}
                 type="text"
                 variant="outlined"
                 label="1º Apellido"
@@ -135,10 +143,10 @@ const SignUp = () => {
                 onChange={(e) => setLastname(e.target.value)}
               ></TextField>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} >
-
+            <Grid item xs={12} md={6} lg={6}>
               <TextField
-              required  sx={{ width: "100%" }}
+                required
+                sx={{ width: "100%" }}
                 type="text"
                 variant="outlined"
                 label="2º Apellido"
@@ -155,9 +163,10 @@ const SignUp = () => {
               ></TextField>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={6} >
-              <TextField  sx={{ width: "100%" }}
-              required
+            <Grid item xs={12} md={6} lg={6}>
+              <TextField
+                sx={{ width: "100%" }}
+                required
                 type="email"
                 variant="outlined"
                 label="Email"
@@ -174,10 +183,12 @@ const SignUp = () => {
               ></TextField>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={6} >
-              <TextField type= 'text'  sx={{ width: "100%" }}
-                 variant="outlined"
-                 required
+            <Grid item xs={12} md={6} lg={6}>
+              <TextField
+                type="text"
+                sx={{ width: "100%" }}
+                variant="outlined"
+                required
                 label="Contraseña"
                 InputProps={{
                   startAdornment: (
@@ -187,16 +198,14 @@ const SignUp = () => {
                       </Icon>
                     </InputAdornment>
                   ),
-                 
                 }}
                 onChange={(e) => setPassword(e.target.value)}
               ></TextField>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} >
-
-
-              <TextField  sx={{ width: "100%" }}
-              required
+            <Grid item xs={12} md={6} lg={6}>
+              <TextField
+                sx={{ width: "100%" }}
+                required
                 type="text"
                 variant="outlined"
                 label="Telefono"
@@ -210,143 +219,137 @@ const SignUp = () => {
                   ),
                 }}
                 onChange={(e) => setPhone(e.target.value)}
-              >
-              </TextField>
+              ></TextField>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} >
-               <FormControl  sx={{ width: "100%", marginTop:"-8px" }}> 
-              <LocalizationProvider dateAdapter={AdapterDayjs}   >
-                <DemoContainer    components={["DatePicker"]}>
-                  <DatePicker  sx={{ width: "100%" }}
-                    onChange={(e) => setbirthDate(e)}
-                    label="Fecha de nacimiento"
-                  />
-                </DemoContainer>
-              </LocalizationProvider>
-               </FormControl> 
+            <Grid item xs={12} md={6} lg={6}>
+              <FormControl sx={{ width: "100%", marginTop: "-8px" }}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DatePicker
+                      sx={{ width: "100%" }}
+                      onChange={(e) => setbirthDate(e)}
+                      label="Fecha de nacimiento"
+                    />
+                  </DemoContainer>
+                </LocalizationProvider>
+              </FormControl>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={6} >
-             <FormControl sx={{ width: "100%" }}> 
-              <InputLabel  id="gender">Género</InputLabel>
-              <Select 
-                labelId="gender"
-                id="gender-select"
-                value={gender}
-                label="Gender"
-
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Icon>
-                      <TransgenderIcon />
-                    </Icon>
-                  </InputAdornment>
-                }
-                onChange={(e) => setGender(e.target.value)}
-              >
-                <MenuItem value={"Female"}>Femenino</MenuItem>
-                <MenuItem value={"Male"}>Masculino</MenuItem>
-                <MenuItem value={"Undefined"}>Indefinido</MenuItem>
-                <MenuItem value={"Nonbinary"}>No binario</MenuItem>
-              </Select>
-               </FormControl> 
+            <Grid item xs={12} md={6} lg={6}>
+              <FormControl sx={{ width: "100%" }}>
+                <InputLabel id="gender">Género</InputLabel>
+                <Select
+                  labelId="gender"
+                  id="gender-select"
+                  value={gender}
+                  label="Gender"
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <Icon>
+                        <TransgenderIcon />
+                      </Icon>
+                    </InputAdornment>
+                  }
+                  onChange={(e) => setGender(e.target.value)}
+                >
+                  <MenuItem value={"Female"}>Femenino</MenuItem>
+                  <MenuItem value={"Male"}>Masculino</MenuItem>
+                  <MenuItem value={"Undefined"}>Indefinido</MenuItem>
+                  <MenuItem value={"Nonbinary"}>No binario</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-            <Grid item xs={12} md={12} lg={12} >
-              <FormControl   sx={{ width: "100%" }}>
-              <InputLabel id="role">Rol</InputLabel>
-              <Select
-              required
-                sx={{ width: "100%" }}
-                labelId="role"
-                id="role-select"
-                value={role}
-                label="Role"
-                onChange={(e) => setRole(e.target.value)}
-              >
-                <MenuItem value={"teacher"}>Profesor</MenuItem>
-                <MenuItem value={"student"}>Estudiante</MenuItem>
-              </Select>
+            <Grid item xs={12} md={12} lg={12}>
+              <FormControl sx={{ width: "100%" }}>
+                <InputLabel id="role">Rol</InputLabel>
+                <Select
+                  required
+                  sx={{ width: "100%" }}
+                  labelId="role"
+                  id="role-select"
+                  value={role}
+                  label="Role"
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <MenuItem value={"teacher"}>Profesor</MenuItem>
+                  <MenuItem value={"student"}>Estudiante</MenuItem>
+                </Select>
               </FormControl>
             </Grid>
 
             {role == "teacher" && (
-            <>
-             <Grid item xs={12} md={6} lg={6} >
-              <FormControl  sx={{ width: "100%" }}>
-                <InputLabel required id="role">Plataforma</InputLabel>
-                <Select
-                
-                  labelId="location"
-                  id="location-select"
-                  value={teacherLocation}
-                  label="Plataforma"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Icon>
-                          <LocationOnIcon />
-                        </Icon>
-                      </InputAdornment>
-                    ),
-                  }}
-                  onChange={(e) => setTeacherLocation(e.target.value)}
-                >
-                  <MenuItem value={"online"}>Online</MenuItem>
-                  <MenuItem value={"inPerson"}>Presencial</MenuItem>
-                </Select>
-              </FormControl>
-              </Grid>
-              <Grid item xs={12} md={6} lg={6} >
-              <FormControl  sx={{ width: "100%" }}>
-                <TextField
-                required 
-                  onChangeCapture={(e)=>setPrice(e.target.value)}
-                  type="number"
-                  variant="outlined"
-                  label="Precio"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Icon>
-                          <EuroIcon />
-                        </Icon>
-                      </InputAdornment>
-                    ),
-                  }}
-                 ></TextField>
-              </FormControl>
-              </Grid>
-              <Grid item xs={12} md={12} lg={12} >
-
-              <FormControl  sx={{ width: "100%" }} > 
-                <TextField
-                required
-                 multiline
-                 maxRows={4}
-                  type="text"
-                  variant="outlined"
-                  label="Descripción"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Icon>
-                          <DescriptionIcon />
-                        </Icon>
-                      </InputAdornment>
-                    ),
-                  }}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></TextField>
-              </FormControl>
-              </Grid >
-
-            </>
-          )}
-
+              <>
+                <Grid item xs={12} md={6} lg={6}>
+                  <FormControl sx={{ width: "100%" }}>
+                    <InputLabel required id="role">
+                      Plataforma
+                    </InputLabel>
+                    <Select
+                      labelId="location"
+                      id="location-select"
+                      value={teacherLocation}
+                      label="Plataforma"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Icon>
+                              <LocationOnIcon />
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                      }}
+                      onChange={(e) => setTeacherLocation(e.target.value)}
+                    >
+                      <MenuItem value={"meet"}>Meet</MenuItem>
+                      <MenuItem value={"zoom"}>Zoom</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                  <FormControl sx={{ width: "100%" }}>
+                    <TextField
+                      required
+                      onChangeCapture={(e) => setPrice(e.target.value)}
+                      type="number"
+                      variant="outlined"
+                      label="Precio"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Icon>
+                              <EuroIcon />
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                      }}
+                    ></TextField>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                  <FormControl sx={{ width: "100%" }}>
+                    <TextField
+                      required
+                      multiline
+                      maxRows={4}
+                      type="text"
+                      variant="outlined"
+                      label="Descripción"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Icon>
+                              <DescriptionIcon />
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                      }}
+                      onChange={(e) => setDescription(e.target.value)}
+                    ></TextField>
+                  </FormControl>
+                </Grid>
+              </>
+            )}
           </Grid>
-
-          
-
         </CardContent>
 
         <CardActions sx={{ display: "flex", justifyContent: "end" }}>
@@ -355,7 +358,11 @@ const SignUp = () => {
           </Link>
 
           <Link to={"/signup"}>
-            <Button variant="contained" color='secondary' onClick={() => handleSignup()}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleSignup()}
+            >
               Registrarse
             </Button>
           </Link>

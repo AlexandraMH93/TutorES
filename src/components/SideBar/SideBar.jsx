@@ -1,9 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Typography,
-} from "@mui/material"
+import { AppBar, Box, Button, Typography, Avatar } from "@mui/material"
 import "./SideBar.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -114,7 +109,11 @@ const SideBar = () => {
                 onClick={() => colorController("subjects")}
               >
                 <BookmarkBorderOutlinedIcon color={currentPage.subjects} />
-                <Typography color="secondary" sx={{textAlign:"center"}}variant="body1">
+                <Typography
+                  color="secondary"
+                  sx={{ textAlign: "center" }}
+                  variant="body1"
+                >
                   Reserva una clase
                 </Typography>
               </Link>
@@ -133,7 +132,13 @@ const SideBar = () => {
             }
             onClick={() => colorController("profile")}
           >
-            <AccountCircleTwoToneIcon color={currentPage.profile} />
+            
+              <Avatar
+                sx={{ m: 2, width: "50%" }}
+                /* alt={subjectName} */
+                src={user && user.profileImage}
+              ></Avatar>
+            
           </Link>
         </Box>
 

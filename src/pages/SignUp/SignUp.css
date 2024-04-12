@@ -5,9 +5,14 @@
     justify-content: center;
     min-width: 30vw;
     gap: 10;
- 
-   
-    margin-top:15vh;
-    
+  
+    width: 100%;
+    height: 100%;
+  
+      background-image: linear-gradient(black, black), url('../../assets/images/edwin-andrade-4V1dC_eoCwg-unsplash.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: saturation;
   
   }
