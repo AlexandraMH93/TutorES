@@ -52,7 +52,7 @@ const Classes = () => {
     <Box className="mainContainer">
       <Box id="BookingContainer">
         <Typography sx={{m:2}} variant="h4"> Mi siguiente clase </Typography>
-
+        <Divider sx={{ m: 2 }} />
         {firstClass ? (
           <FirstClass
             dateInfo={firstClass}

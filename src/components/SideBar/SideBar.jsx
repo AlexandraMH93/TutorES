@@ -10,7 +10,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import { useEffect, useState } from "react";
 import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone"
 
-const SideBar = () => {
+const SideBar = ( ) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState({
     calendar: "secondary",
@@ -134,26 +134,27 @@ const SideBar = () => {
           >
             
               <Avatar
-                sx={{ m: 2, width: "50px", height: "50px" }}
+                sx={{  width: "50px", height: "50px" }}
                 /* alt={subjectName} */
                  src={localStorage.getItem("image") && localStorage.getItem("image")} 
               ></Avatar>
-            
+              <Typography color="secondary">Editar perfil</Typography>
           </Link>
-        </Box>
 
-        <Box className="sideBarOption">
           <Button
             color={currentPage.logout}
-            sx={{ marginTop: "10px" }}
+            sx={{ marginTop: "6px" }}
             id="logout"
             onClick={() => {
               onLogout()
             }}
           >
             <LogoutIcon></LogoutIcon>
+           
           </Button>
         </Box>
+
+         
       </Box>
     </Box>
   )

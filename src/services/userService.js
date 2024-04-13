@@ -6,10 +6,27 @@ export const getUserInfo = async () => {
             'Authorization': localStorage.getItem('token')
         }                                                   
     })
-    console.log(data)
+ 
     return data
 }
 
+
+export const updateUserInfo = async (newUser) => {
+    try {
+        const {data}  = await api.put('/profile/', newUser, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }                                                   
+        })
+         
+      
+        return data
+        
+    } catch (error) {
+        return false
+    }
+   
+}
 
 /* export const getTeacherInfo = async () => {
     const { data } = await api.get('/profile/', {

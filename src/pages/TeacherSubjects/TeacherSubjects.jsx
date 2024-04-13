@@ -56,8 +56,8 @@ import AddIcon from "@mui/icons-material/Add"
   useEffect(() => { handleTeacherSubjects() }, [dataBaseTeacherSubjects])
 
   return (
-    <Box id="subjects-page" /* sx={{width: '80vw', height: '100vh'}} */>
-      <Box sx={{ width: "90%", height: "90%" }}>
+    <Box id="mainContainer" /* sx={{width: '80vw', height: '100vh'}} */>
+      <Box id="calendarContainer">
         <Typography sx={{ m: 2, textAlign: "start" }} variant="h4">
           Asignaturas
         </Typography>

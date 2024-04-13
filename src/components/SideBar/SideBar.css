@@ -39,9 +39,15 @@
     gap: 40px
 }
 
-.sideBarOption:hover {
-    scale: 1.02;
-    filter: brightness(1.4);
+.sideBarOption{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#logout:hover {
+    scale: 1.2;
+    
    /*  box-shadow: 0 0 10px #284845; */
 }
 
