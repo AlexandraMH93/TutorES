@@ -262,7 +262,7 @@ const UserProfile = () => {
               
               </>
             )}
-              <Grid item xs={localStorage.getItem("role")== "teacher" ? 3: 9} id="buttonContainer">
+              <Grid item xs={localStorage.getItem("role")== "teacher" ? 6: 9} id="buttonContainer">
                   <Button
                     onClick={() => {
                       handleButton()
