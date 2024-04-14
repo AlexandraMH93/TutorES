@@ -46,6 +46,18 @@ const BookingClass = () => {
         }
     }
 
+
+    const handleTeacher = async () => {
+
+        if (booking.teacher != "") {
+            setValue(3)
+            
+        }
+
+
+
+    }
+
     const handleDate = async () => {
         if (booking.date != "") {
             setValue(2)
@@ -54,41 +66,10 @@ const BookingClass = () => {
         }
     }
 
-
-    const handleTeacher = async () => {
-
-        if (booking.teacher != "") {
-            setValue(3)
-            const result = await getTeachersByDate({ "date": booking.date.date, "time": booking.date.time })
-            setTeachers(result)
-        }
-
-
-
-    }
-
-    useEffect(() => {
-
-        getSubjects()
-
-    }, [])
-
-    useEffect(() => {
-        handleSubject()
-    }, [booking.subject])
-
-    useEffect(() => {
-       
-    }, [booking])
-
-
-    useEffect(() => {
-        handleDate()
-    }, [booking.date])
-
-    useEffect(() => {
-        handleTeacher()
-    }, [booking.teacher])
+    useEffect(() => {getSubjects()}, [])
+    useEffect(() => {handleSubject()}, [booking.subject])
+    useEffect(() => {handleDate()}, [booking.date])
+    useEffect(() => {handleTeacher()}, [booking.teacher])
 
 
    
