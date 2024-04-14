@@ -14,13 +14,14 @@ body {
   display: grid;
   align-content: center;
   justify-content: center;
-  top: 280px;
+  
   min-width: 20%;
   margin-top:10vh;
- /*  background-color: #284845; */
+
   /* background-color: #dae9d9; */
  /*  background-color: rgb(234, 247, 246); */
- background-image: linear-gradient(black, black), url('./assets/images/edwin-andrade-4V1dC_eoCwg-unsplash.jpg');
+ /* background-image: linear-gradient(black, black), url('./assets/images/edwin-andrade-4V1dC_eoCwg-unsplash.jpg'); */
+ background-image:   linear-gradient(black, black), url('./assets/images/maya-maceka-yW-Qgw_IJXg-unsplash.jpg');
  background-repeat: no-repeat;
  background-size:cover ;
  background-position: center;

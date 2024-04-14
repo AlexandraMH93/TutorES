@@ -3,13 +3,13 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    min-width: 30vw;
+    min-width: 20%;
     gap: 10;
-  
+    margin-top:10vh;
     width: 100%;
     height: 100%;
   
-      background-image: linear-gradient(black, black), url('../../assets/images/edwin-andrade-4V1dC_eoCwg-unsplash.jpg');
+      background-image: linear-gradient(black, black), url('../../assets/images/maya-maceka-yW-Qgw_IJXg-unsplash.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;

@@ -87,7 +87,7 @@ const SignUp = () => {
   }
 
   return (
-    <div id="signup-container"> console.log(res.token)
+    <div id="signup-container">
       <Card
         sx={{
           width: "40vw",
@@ -98,7 +98,7 @@ const SignUp = () => {
           scrollbarWidth: "thin",
         }}
       >
-        <CardHeader title="Registrarse">
+        <CardHeader sx={{textAlign: 'center'}} title="Registrarse">
           <Typography variant="h3"> Registrarse </Typography>
         </CardHeader>
 

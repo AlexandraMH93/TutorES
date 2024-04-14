@@ -29,7 +29,7 @@ const Login = () => {
     return (
       <>
         <div className="auth">
-          <Card>
+          <Card  >
             <CardHeader
               title="Iniciar sesión"
               sx={{ display: "flex", textAlign: "center" }}
