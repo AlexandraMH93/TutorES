@@ -15,7 +15,7 @@ const Login = () => {
         const res = await login({email, password})
         
         if(res){
-          console.log(res)
+           
         localStorage.setItem('token', res.token)
         localStorage.setItem('role', res.role)
         localStorage.setItem('image', res.image)

@@ -12,6 +12,7 @@ import {
   FilledInput,
   Box, Grid
 } from "@mui/material"
+
 import { useState } from "react"
 import { signUp } from "../../services/authService"
 import { Link, useNavigate } from "react-router-dom"
@@ -25,6 +26,8 @@ import PhoneIcon from "@mui/icons-material/Phone"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import EuroIcon from "@mui/icons-material/Euro"
 import DescriptionIcon from "@mui/icons-material/Description"
+import { MuiFileInput } from 'mui-file-input'
+
 import "./SignUp.css"
 
 //Importación del desplegable Género
@@ -38,6 +41,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { DatePicker } from "@mui/x-date-pickers/DatePicker"
+import { uploadImage } from "../../services/imageService"
 
 const SignUp = () => {
   const [firstname, setFirstname] = useState("")
@@ -53,12 +57,25 @@ const SignUp = () => {
   const [price, setPrice]  = useState("")
   const [teacherLocation, setTeacherLocation]= useState("")
   const [isPassVisible, setIsPassVisible]  = useState(false)
- 
+  const [image, setImage]= useState("")
 
   const [role, setRole] = useState("")
   const navigate = useNavigate()
 
+  const handleFile= (e)=>{
+   
+    console.log(e)
+    setImage(e)
+  }
+
+
   const handleSignup = async () => {
+
+    let imageUrl= null;
+    if(image){
+      imageUrl= await uploadImage(image)
+
+    }
 
     const userData={
       "userInfo":{
@@ -71,7 +88,8 @@ const SignUp = () => {
       "location":"España",
       "role":role,
       "email":email,
-      "password":password
+      "password":password,
+      "profileImage": imageUrl
       },
       "teacherInfo":{
       "description":description,
@@ -82,7 +100,7 @@ const SignUp = () => {
     const res = await signUp(userData)
     localStorage.setItem("token", res.token)
     localStorage.setItem("role", res.role)
-    localStorage.setItem("role", res.image)
+    localStorage.setItem("image", imageUrl)
     navigate("/")
   }
 
@@ -261,6 +279,11 @@ const SignUp = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
+            <FormControl sx={{ width: "100%" }}>
+            <MuiFileInput variant="outlined" value={image} label="Subir imagen de perfil" onChange={handleFile} />
+            </FormControl>
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
               <FormControl sx={{ width: "100%" }}>
                 <InputLabel id="role">Rol</InputLabel>
                 <Select
@@ -276,7 +299,14 @@ const SignUp = () => {
                   <MenuItem value={"student"}>Estudiante</MenuItem>
                 </Select>
               </FormControl>
+             
+
+
+
+
             </Grid>
+
+
 
             {role == "teacher" && (
               <>
